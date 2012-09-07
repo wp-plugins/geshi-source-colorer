@@ -85,16 +85,16 @@ You can change in the global plugin option this tags / options, so you don't nee
 = Where can I find the tag options ? =
 Take a look on the administration page of the plugin. Within the brackets [] you can find the option name, that can be passed to the tag. There
 are also some options, which are set in the tag only:
-* highlight             : is used for static highlighting some code lines. Each line number (started with 1) is spitted by space [allowed values: spaces and numbers]
-* hoverhighlight        : this option can be set more than once and adds a dynamic hover effect to a DOM element for hovering different code lines [allowed valus: class / ID of the DOM element, line numbers split by spaces, CSS style definition]
-* keywordcase           : sets all keywords to lower or upper case. An empty value leaves the code untouched [allowed values: upper | lower | ""]
-* id                    : set the unique ID of the code block [allowed values: every string, default value: geshisourcecolorer-MD5 hash of the source] 
-* style                 : sets the style of the code. If this option is not set, the plugin tries to find a style which is named with the language name (lower-case). If the style is not found, it uses the default style
-* lol                   : name of the source code that is shown within the list of listing (if this flag isn't set or empty, the code is not shown on the list) [allowed values: string value]
-* lolhead               : shows the name, which is set by the list of listing option [allowed values: true | false]
-* toolbar_blankwindow   : this option enables / disables the button for creating a text window with the source code [allowed values: true | false] 
-* toolbar_copyclipboard : this option enables / disables the copt-to-clipboard button [allowed values: true | false]
-* toolbar_linenumber    : this option enables / disables the button for hiding / showing the line numbers [allowed values: true | false]
+ * highlight             : is used for static highlighting some code lines. Each line number (started with 1) is spitted by space [allowed values: spaces and numbers]
+ * hoverhighlight        : this option can be set more than once and adds a dynamic hover effect to a DOM element for hovering different code lines [allowed valus: class / ID of the DOM element, line numbers split by spaces, CSS style definition]
+ * keywordcase           : sets all keywords to lower or upper case. An empty value leaves the code untouched [allowed values: upper | lower | ""]
+ * id                    : set the unique ID of the code block [allowed values: every string, default value: geshisourcecolorer-MD5 hash of the source] 
+ * style                 : sets the style of the code. If this option is not set, the plugin tries to find a style which is named with the language name (lower-case). If the style is not found, it uses the default style
+ * lol                   : name of the source code that is shown within the list of listing (if this flag isn't set or empty, the code is not shown on the list) [allowed values: string value]
+ * lolhead               : shows the name, which is set by the list of listing option [allowed values: true | false]
+ * toolbar_blankwindow   : this option enables / disables the button for creating a text window with the source code [allowed values: true | false] 
+ * toolbar_copyclipboard : this option enables / disables the copt-to-clipboard button [allowed values: true | false]
+ * toolbar_linenumber    : this option enables / disables the button for hiding / showing the line numbers [allowed values: true | false]
 
 
 = Can I change the layout of the code box ? =
