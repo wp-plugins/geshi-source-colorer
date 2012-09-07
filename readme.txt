@@ -61,8 +61,10 @@ so the plugin can create the correct expression for modifing the content. There 
 * %c this is the substitution for the source code
 * %p is the subsitution for the parameters, like a key-value pair. This placeholder represents the parameter string eg: key1="value" key2="value"
 * %s is a placeholder for any kind of spaces. You need this placeholder to create a space between the name of the tag and the parameter list. This placeholder represent one or more than one space
-All meta characters are masked, so you can add a own tag strucutre. Take a look to the plugin's setting page, the defalut values are used within this documentation. An examples shows
-<pre>[cc lang="your language"]your code[/cc]</pre>
+All meta characters are masked, so you can add a own tag strucutre. Take a look to the plugin's setting page, the defalut values are used within this documentation. Add to your post or page a tag
+<pre>[cc lang="source language"]your source code[/cc]</pre> or the call <pre>[cci lang="source language"]your source code[/cci]</pre>
+You can change in the global plugin option this tags / options, so you don't need a change to your articles, if you update from another plugin. The layout of the code is stored in the plugin options
+(default values), this values can be overwritten by each code tag.
 
 
 == Requirements ==
@@ -79,13 +81,6 @@ All meta characters are masked, so you can add a own tag strucutre. Take a look 
 
 
 == Frequently Asked Questions ==
-
-= How can I use the plugin ? =
-Add to your post or page a tag <pre>[cc lang="source language"]your source code[/cc]</pre> or the call <pre>[cci lang="source language"]your source code[/cci]</pre>
-The tags, which are shown here in the FAQ can be changed in the plugin options, so here are this tags are only for the examples. You can change in the global plugin option
-this tags / options, so you don't need a change to your articles, if you update from another plugin. The layout of the code is stored in the plugin options (default values),
-this values can be overwritten by each code tag.
-
 
 = Where can I find the tag options ? =
 Take a look on the administration page of the plugin. Within the brackets [] you can find the option name, that can be passed to the tag. There
@@ -174,7 +169,7 @@ The line highlight works only on code blocks, not on code lines. There are three
 in a flag of your code block. You can use this with the "highlight" flag (see above), eg (we are highlighting the lines 3, 5 and 12):
 <pre>
 [cc lang="cpp" highlight="3 5 12"]your code[/cc]
-<pre>
+</pre>
 
 On the second way you can add "hoverhighlight" to the code tag. This two tags in the example creates a hover effect on the ID (begins with #) and class (begins with .) elements for the lines
 after the comma. The style of the hover effect is set in the third parameter, which is optional, if it is not set the default highlight style is used. The normal style is saved during hovering
