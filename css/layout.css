@@ -1,0 +1,159 @@
+/** 
+ * #########################################################################
+ * # GPL License                                                           #
+ * #                                                                       #
+ * # This file is part of the Wordpress GeSHi Source Colorer plugin.       #
+ * # Copyright (c) 2012, Philipp Kraus, <philipp.kraus@flashpixx.de>       #
+ * # This program is free software: you can redistribute it and/or modify  #
+ * # it under the terms of the GNU General Public License as published by  #
+ * # the Free Software Foundation, either version 3 of the License, or     #
+ * # (at your option) any later version.                                   #
+ * #                                                                       #
+ * # This program is distributed in the hope that it will be useful,       #
+ * # but WITHOUT ANY WARRANTY; without even the implied warranty of        #
+ * # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         #
+ * # GNU General Public License for more details.                          #
+ * #                                                                       #
+ * # You should have received a copy of the GNU General Public License     #
+ * # along with this program.  If not, see <http://www.gnu.org/licenses/>. #
+ * #########################################################################
+**/
+
+
+/** style for the "list of listings" **/
+#geshisourcecolorer-lol {
+    background: #efefef;
+    border-width: 1px;
+    border-color: #ababab;
+    border-style: solid;
+    position: relative;
+    width: 12em;
+    height: auto;
+    padding: 0.2em;
+}
+
+/** source list without any item symbol **/
+#geshisourcecolorer-lol ul {
+    list-style-type: none;
+}
+
+/** set the head layout in the "list of listings" **/
+#geshisourcecolorer-lol .head {
+    font-weight: bold;
+    position: relative;
+    font-family: sanf-serif;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 0.5em;
+}
+
+
+
+/** main code line layout **/
+.geshisourcecolorer-line
+{   
+    display: inline-block;
+    font-family: sans-serif;
+}
+
+/** style of the which is shown on collapsed code blocks **/
+.geshisourcecolorer-collapse-button {
+    cursor: pointer;
+}
+
+/** main code block layout
+ * @note colorize the background of the code block for backgrounding the line numbers
+ **/
+.geshisourcecolorer-block {
+    background: #efefef;
+}
+
+/** create the codelines with a inside list, line breakes
+ * are corrected
+ * @note only the line number shoudl be styled, so we colorize
+ * the line content
+ **/
+.geshisourcecolorer-block ol
+{
+    background: #ffffff;
+    border-width: 1px;
+    border-color: #ababab;
+    border-style: solid;
+    margin-left: 2.75em;
+}
+
+/** set the font family only to the code lines **/
+.geshisourcecolorer-block ol li
+{
+    font-family: sans-serif;
+    font-size: small;
+    padding-left: 0.2em;
+    line-height: 1.25em;
+}
+
+
+
+
+/* default value of the toolbar
+ * @warn the toolbar need not have the "visibility: hidden" value,
+ * in this case jQuery can not fade the toolbar
+**/
+.geshisourcecolorer .toolbar
+{
+    background-color: #dddddd;
+    position: absolute;
+    z-index: 10;
+    border-width: 1px;
+    border-color: #6a6a6a;
+    border-style: solid;
+    border-radius: 5px;
+    border-collapse: separate;
+    border-spacing: 2px;
+    width: auto;
+    display: table;
+    height: 30px;
+    padding: 2px;
+}
+
+/** default settings of the menu elements **/
+.geshisourcecolorer .toolbar div {
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-width: 1px;
+    border-color: #6a6a6a;
+    border-style: solid;
+    border-radius: 3px;
+    display: table-cell;
+    padding: 1px;
+}
+
+/** hover effect of the menu elements **/
+.geshisourcecolorer .toolbar div:hover {
+    background-color: #ababab;
+}
+
+/** style of the "toggle line number" button **/
+.geshisourcecolorer .toolbar .togglelinenumber
+{
+    background-image: url(../images/linenumber.png);
+    height: 20px;
+    width: 20px;
+ }
+
+/** style of the "copy to clipboard" button **/
+.geshisourcecolorer .toolbar .copyclipboard
+{
+    background-image: url(../images/copy.png);
+    height: 20px;
+    width: 20px;
+}
+
+/** style of the "create a code window" button **/
+.geshisourcecolorer .toolbar .sourcewindow
+{
+    background-image: url(../images/source.png);
+    height: 20px;
+    width: 20px;
+}
+ 
