@@ -1,0 +1,51 @@
+/** 
+ * #########################################################################
+ * # GPL License                                                           #
+ * #                                                                       #
+ * # This file is part of the Wordpress GeSHi Source Colorer plugin.       #
+ * # Copyright (c) 2012, Philipp Kraus, <philipp.kraus@flashpixx.de>       #
+ * # This program is free software: you can redistribute it and/or modify  #
+ * # it under the terms of the GNU General Public License as published by  #
+ * # the Free Software Foundation, either version 3 of the License, or     #
+ * # (at your option) any later version.                                   #
+ * #                                                                       #
+ * # This program is distributed in the hope that it will be useful,       #
+ * # but WITHOUT ANY WARRANTY; without even the implied warranty of        #
+ * # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         #
+ * # GNU General Public License for more details.                          #
+ * #                                                                       #
+ * # You should have received a copy of the GNU General Public License     #
+ * # along with this program.  If not, see <http://www.gnu.org/licenses/>. #
+ * #########################################################################
+**/
+
+
+/** settings page table **/
+.geshisourcecolorer-table {
+    display: inline;
+}
+
+/** settings page table row **/
+.geshisourcecolorer-tr {
+    display: table-row;
+}
+
+/** settings page table data **/
+.geshisourcecolorer-td {
+    display: table-cell;
+    padding: 1em;
+}
+
+/** settings page textarea **/
+.geshisourcecolorer-td textarea, .geshisourcecolorer-td input {
+    vertical-align: middle;
+    margin: 1em;
+}
+
+/** preview code block **/
+#geshisourcecolorer-preview {
+    border-width: 1px;
+    border-color: #ababab;
+    border-style: solid;
+    width: 75%;
+}
