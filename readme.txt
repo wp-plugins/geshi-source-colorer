@@ -102,6 +102,11 @@ First take a look on the "layout.css" in the plugin directory. There are three m
     <pre>[cci lang="your language" css_line="classname"]your code[/cci]</pre>
 </li>
 </ol>
+The plugin has got two container styles that can be used:
+<ul>
+<li>"geshisourcecolorer-block" it is a style with white background and greyed line numbers</li>
+<li>"geshisourcecolorer-block-black" a black style like Emacs, with black background and white line numbers</li>
+</ul>
 These CSS styles defines the <u>container layout</u> of the code bock / line only.
 </p>
 
@@ -125,6 +130,12 @@ so you can use any CSS element to configurate the source code parts.
 
 
 == Changelog == 
+
+= 0.12 =
+
+* add class definition for styles
+* add a black styles
+* add tabbed code blocks
 
 = 0.11 =
 
@@ -183,12 +194,22 @@ Yes, disable all layout information of GeSHi (set the "geshicss" flag to false g
 used, so you can create your own styles.
 
 
+= Can I change the layout of the container ? =
+Yes, the plugin has got two styles:
+<ul>
+<li>"geshisourcecolorer-block" it is a style with white background and greyed line numbers</li>
+<li>"geshisourcecolorer-block-black" a black style like Emacs, with black background and white line numbers</li>
+</ul>
+Set up one of these styles on the plugin setting page in the main menu under "css class name of the code blocks container" (also the line style). 
+
+
 = Where are the styles of the codes ? =
-The plugin uses one default style for all codes, because defininng different styles for each theme / theme group is not possible. Also the styles can be different on each language,
-so there are to many possibilities to create the style definition. But the plugin makes it easy to create your style, that can be used with your theme. Open the plugin settings and
+The plugin uses one default style for all codes, because defining different styles for each theme / theme group is not possible. Also the styles can be different on each language,
+so there are to many possibilities to create the style definitions. But the plugin makes it easy to create your style, that can be used with your theme. Open the plugin settings and
 the subsection "code styles". In this section you can set up on each code description an own CSS style. Please don't ask if I can create a style for you, because I don't know the 
-colors of your site. Also a message with a link to other code layout styles is not helpfull. The plugin shows you a very simple method to create a style, so please do it! If you
+colors of your site, so creating different predefined  styles are not usefull. <em>The plugin shows you a very simple method to create a style, so please do it yourself!</em> If you
 have created a style and you think other people can use them also, send me the style definition, than I can add it to the plugin defaults.
+
 
 = Can I change the layout of the box, in which the source code is shown ? =
 Yes, at the moment there are two styles for code blocks:

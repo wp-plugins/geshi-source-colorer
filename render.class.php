@@ -55,8 +55,8 @@ class render {
         add_settings_field("tabsize",           __("tabulator size", "fpx_geshisourcecolorer")." <em>[tabsize]</em>",                          get_class()."::render_tabsize",           "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");
         add_settings_field("copyclipboardtext", __("copy-clipboard message text", "fpx_geshisourcecolorer")." <em>[copytext]</em>",            get_class()."::render_clipboardcopytext", "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");
         add_settings_field("lolheadtext",       __("header text of the list of listings", "fpx_geshisourcecolorer"),                           get_class()."::render_lolheadtext",       "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
-        add_settings_field("blockcss",          __("css class name of the code blocks", "fpx_geshisourcecolorer")." <em>[css_block]</em>",     get_class()."::render_codeblockcss",      "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
-        add_settings_field("linecss",           __("css class name of the code lines", "fpx_geshisourcecolorer")." <em>[css_line]</em>",       get_class()."::render_codelinecss",       "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
+        add_settings_field("blockcss",          __("css class name of the code blocks container", "fpx_geshisourcecolorer")." <em>[css_block]</em>",     get_class()."::render_codeblockcss",      "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
+        add_settings_field("linecss",           __("css class name of the code lines container", "fpx_geshisourcecolorer")." <em>[css_line]</em>",       get_class()."::render_codelinecss",       "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
   
         
         add_settings_section("fpx_geshisourcecolorer_option",  __("code block toolbar", "fpx_geshisourcecolorer"),       get_class()."::render_codeblocktoolbarsection",          "fpx_geshisourcecolorer_optioncodeblocktoolbar");
@@ -183,7 +183,7 @@ class render {
         
         // determine the current version, we can only import data <= current version
         $importversion = floatval( isset($data["pluginversion"]) ? $data["pluginversion"] : 0 );
-        if ($importversion < self::getPluginVersion())
+        if (round($importversion,2) < round(self::getPluginVersion(),2))
         {
             add_settings_error( "geshisourcecolorer", "option_validate_importversion", __("import data version is bigger than current version", "fpx_geshisourcecolorer"), "error");
             return $options;
@@ -408,8 +408,6 @@ class render {
         echo "<div class=\"geshisourcecolorer-td\">";
         echo "<input id=\"geshisourcecolorer-stylesave\" type=\"button\" value=\"".__("store style", "fpx_geshisourcecolorer")."\" />";
         echo "<input id=\"geshisourcecolorer-styledelete\" type=\"button\" value=\"".__("delete style", "fpx_geshisourcecolorer")."\" /></div>";
-        echo "<input id=\"geshisourcecolorer-stylerename\" type=\"button\" value=\"".__("rename style", "fpx_geshisourcecolorer")."\" /></div>";
-        echo "<input id=\"geshisourcecolorer-stylecopy\" type=\"button\" value=\"".__("copy style", "fpx_geshisourcecolorer")."\" /></div>";
         echo "<input id=\"geshisourcecolorer-stylepreview\" type=\"button\" value=\"".__("preview style", "fpx_geshisourcecolorer")."\" /></div>";
         echo "</div>";
          

@@ -3,7 +3,7 @@
 Plugin Name: GeSHi Source Colorer
 Plugin URI: http://wordpress.org/extend/plugins/geshi-source-colorer
 Author URI: http://flashpixx.de
-Description: The plugin can colorize any source in a post or page. Layout and tag names can be set dynamically, so a migration of other plugins is possible
+Description: The plugin can colorize any source in a post or page. There are a lot of possiblities to configurate your code designs.
 Author: flashpixx
 Version: 0.11
  
@@ -29,16 +29,11 @@ Version: 0.11
 **/
 
 namespace de\flashpixx\geshisourcecolorer;
-
+// http://justfreetemplates.com/blog/2009/08/31/ultra-simple-jquery-tabs.html
 // ==== constant for developing with the correct path of the plugin ================================================================================
 //define(__NAMESPACE__."\LOCALPLUGINFILE", __FILE__);
 define(__NAMESPACE__."\LOCALPLUGINFILE", WP_PLUGIN_DIR."/geshi-source-colorer/".basename(__FILE__));
 define(__NAMESPACE__."\DEBUG", true);
-    
-/** TODO
- * add different styles (dark, eg http://alexgorbatchev.com/SyntaxHighlighter/manual/themes/fadetogrey.html ) with configuration on each code shortcut
- * add tabbed codes, so different code shortcuts can be grouped in a tabbed window
- **/
 // =================================================================================================================================================
 
 
@@ -187,7 +182,6 @@ function install()
                 ),
                   
                 // style options of the codes
-                // like: array ("matlab" => array())
                 "style"             => array(
                 
                         "default"  => array(
