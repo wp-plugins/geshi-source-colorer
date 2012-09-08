@@ -58,9 +58,9 @@ element. Own styles for different codes can be created and exported / imported i
 
 The shortcuts / tags are free defined, so here you see the default definition "cc" and "cci". Feel free to change this names. You can define a own style, but you need to pass different placeholders in it,
 so the plugin can create the correct expression for modifing the content. There are three placeholders:
-* %c this is the substitution for the source code
-* %p is the subsitution for the parameters, like a key-value pair. This placeholder represents the parameter string eg: key1="value" key2="value"
-* %s is a placeholder for any kind of spaces. You need this placeholder to create a space between the name of the tag and the parameter list. This placeholder represent one or more than one space
+1. %c this is the substitution for the source code
+2. %p is the subsitution for the parameters, like a key-value pair. This placeholder represents the parameter string eg: key1="value" key2="value"
+3. %s is a placeholder for any kind of spaces. You need this placeholder to create a space between the name of the tag and the parameter list. This placeholder represent one or more than one space
 All meta characters are masked, so you can add a own tag strucutre. Take a look to the plugin's setting page, the defalut values are used within this documentation. Add to your post or page a tag
 <pre>[cc lang="source language"]your source code[/cc]</pre> or the call <pre>[cci lang="source language"]your source code[/cci]</pre>
 You can change in the global plugin option this tags / options, so you don't need a change to your articles, if you update from another plugin. The layout of the code is stored in the plugin options
@@ -75,6 +75,13 @@ You can change in the global plugin option this tags / options, so you don't nee
 
 == Changelog == 
 
+= 0.11 =
+
+* fixing CSS layout errors
+* fixing encoding errors and filter hook
+* fixing copy-clipboard & create-blank-source-window layout errors
+* sorting language option field on the settings page
+
 = 0.1 =
 
 * first version with the base functions
@@ -85,16 +92,16 @@ You can change in the global plugin option this tags / options, so you don't nee
 = Where can I find the tag options ? =
 Take a look on the administration page of the plugin. Within the brackets [] you can find the option name, that can be passed to the tag. There
 are also some options, which are set in the tag only:
- * highlight             : is used for static highlighting some code lines. Each line number (started with 1) is spitted by space [allowed values: spaces and numbers]
- * hoverhighlight        : this option can be set more than once and adds a dynamic hover effect to a DOM element for hovering different code lines [allowed valus: class / ID of the DOM element, line numbers split by spaces, CSS style definition]
- * keywordcase           : sets all keywords to lower or upper case. An empty value leaves the code untouched [allowed values: upper | lower | ""]
- * id                    : set the unique ID of the code block [allowed values: every string, default value: geshisourcecolorer-MD5 hash of the source] 
- * style                 : sets the style of the code. If this option is not set, the plugin tries to find a style which is named with the language name (lower-case). If the style is not found, it uses the default style
- * lol                   : name of the source code that is shown within the list of listing (if this flag isn't set or empty, the code is not shown on the list) [allowed values: string value]
- * lolhead               : shows the name, which is set by the list of listing option [allowed values: true | false]
- * toolbar_blankwindow   : this option enables / disables the button for creating a text window with the source code [allowed values: true | false] 
- * toolbar_copyclipboard : this option enables / disables the copt-to-clipboard button [allowed values: true | false]
- * toolbar_linenumber    : this option enables / disables the button for hiding / showing the line numbers [allowed values: true | false]
+1. highlight             : is used for static highlighting some code lines. Each line number (started with 1) is spitted by space [allowed values: spaces and numbers]
+2. hoverhighlight        : this option can be set more than once and adds a dynamic hover effect to a DOM element for hovering different code lines [allowed valus: class / ID of the DOM element, line numbers split by spaces, CSS style definition]
+3. keywordcase           : sets all keywords to lower or upper case. An empty value leaves the code untouched [allowed values: upper | lower | ""]
+4. id                    : set the unique ID of the code block [allowed values: every string, default value: geshisourcecolorer-MD5 hash of the source] 
+5. style                 : sets the style of the code. If this option is not set, the plugin tries to find a style which is named with the language name (lower-case). If the style is not found, it uses the default style
+6. lol                   : name of the source code that is shown within the list of listing (if this flag isn't set or empty, the code is not shown on the list) [allowed values: string value]
+7. lolhead               : shows the name, which is set by the list of listing option [allowed values: true | false]
+8. toolbar_blankwindow   : this option enables / disables the button for creating a text window with the source code [allowed values: true | false] 
+9. toolbar_copyclipboard : this option enables / disables the copt-to-clipboard button [allowed values: true | false]
+10. toolbar_linenumber    : this option enables / disables the button for hiding / showing the line numbers [allowed values: true | false]
 
 
 = Can I change the layout of the code box ? =

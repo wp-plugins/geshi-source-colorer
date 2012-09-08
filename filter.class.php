@@ -22,14 +22,31 @@
 
 namespace de\flashpixx\geshisourcecolorer;
 
-// http://blog.rapiddg.com/2009/10/writing-a-tinymce-plugin-in-wordpress/
-// http://www.tinymce.com/forum/viewtopic.php?id=28383
-// http://codex.wordpress.org/TinyMCE
-// http://brettterpstra.com/adding-a-tinymce-button/
-    
 /** class for doing content filtering **/
 class filter {
 
+    /** hook for filtering the source code bevor any other filter catches
+     * @param $pcContent content
+     * @return modified HTML
+     **/
+    static function runCodeBefore($pcContent)
+    {
+        $option = get_option("fpx_geshisourcecolorer_option");
+        return preg_replace_callback( self::createFilterRegEx($option["tag"]["code"]), "self::actionBefore", $pcContent );
+    }
+    
+    
+    /** hook for filtering the source code bevor any other filter catches
+     * @param $pcContent content
+     * @return modified HTML
+     **/
+    static function runCodeLineBefore($pcContent)
+    {
+        $option = get_option("fpx_geshisourcecolorer_option");
+        return preg_replace_callback( self::createFilterRegEx($option["tag"]["line"]), "self::actionBefore", $pcContent );
+    }
+    
+    
     /** replace hook function for the code blocks
      * @param $pcContent content
      * @return modified HTML
@@ -137,8 +154,8 @@ class filter {
         
         $lc = $geshi->error();
         if (empty($lc))
-            return $geshi->parse_code();
-        return "<strong>".$lc."</strong>";
+            return " ".$geshi->parse_code()." ";
+        return " <strong>".$lc."</strong> ";
         
     }
     
@@ -176,8 +193,17 @@ class filter {
 
         $lc = $geshi->error();
         if (empty($lc))
-                return $action.$geshi->parse_code();
-        return "<strong>".$lc."</strong>";
+                return " ".$action.$geshi->parse_code()." ";
+        return " <strong>".$lc."</strong> ";
+    }
+    
+    static function actionBefore($pa)
+    {
+        if ( (empty($pa)) || (count($pa) < 3) )
+            return "<strong>error during code parsing, please correct your tag definition</strong>";
+
+        // replace content with HTML encoding
+        return str_replace("%", htmlentities($pa[4], ENT_COMPAT, get_option("blog_charset")), str_replace($pa[4], "%", $pa[0]));
     }
     
     
@@ -205,7 +231,7 @@ class filter {
             $toolbar .= "</div>";
             
             if ( ($option["toolbar"]["sourcewindow"]) || ($option["toolbar"]["copyclipboard"]) )
-                $toolbar .= "<span class=\"source\" style=\"position: absolute; visibility: hidden; z-index: -10;\">".$source."</span>";
+                $toolbar .= "<pre class=\"source\" style=\"position: absolute; visibility: hidden; z-index: -10;\">".htmlentities($source, ENT_COMPAT, get_option("blog_charset"))."</pre>";
         }
         
         // add hoverhighlight data, we create spans with hidden visibility, rel attribute for style and class "hoverhighlight"
@@ -461,11 +487,6 @@ class filter {
         if (!is_bool($param["toolbar"]["linenumber"]))
             $param["toolbar"]["linenumber"]              = $param["toolbar"]["linenumber"] == "true";
         
-        /*
-        echo "<pre>";
-        print_r($param);
-        echo "</pre>";
-        */
         return $param;
     }
 

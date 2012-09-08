@@ -64,12 +64,17 @@ jQuery(document).ready( function() {
         var lines =  jQuery(this).parent().parent().parent().find("ol");
         if (lines.css("list-style-type") == "none") {
             lines.css("list-style-type", lines.data("list-style-type-before") );
-            lines.css("margin-left", lines.data("margin-left-before") );
+            lines.find("li").each( function() {
+                jQuery(this).css("margin-left", jQuery(this).data("margin-left-before") );
+            });
         } else {
             lines.data("margin-left-before", lines.css("margin-left"));
             lines.data("list-style-type-before", lines.css("list-style-type"));
             lines.css("list-style-type", "none");
-            lines.css("margin-left", "0");
+            lines.find("li").each( function() { 
+                jQuery(this).data("margin-left-before", jQuery(this).css("margin-left") );
+                jQuery(this).css("margin-left", 0);
+            });
         }
     });
          
@@ -93,13 +98,8 @@ jQuery(document).ready( function() {
                        
     // click function to create a new window with blank source code
     jQuery(".geshisourcecolorer .toolbar .sourcewindow").click( function () {
-        var win = window.open("", "GeSHi Source Colorer");
-        var doc = win.document.open("", "replace");
-            
-        doc.write("<html><body><pre>");
-        doc.write( jQuery(this).parent().parent().find(".source").text() );
-        doc.write("</pre></body></html>");    
-        doc.close();
+        var win   = window.open("", "GeSHi Source Colorer");
+        win.document.writeln( "<html><body><pre>"+jQuery(this).parent().parent().find(".source").html()+"</pre></body></html>" );
     });
            
                        

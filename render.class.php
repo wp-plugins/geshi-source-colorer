@@ -190,62 +190,12 @@ class render {
             return $options;
         }      
         
-        
-        // do import on the version
-        $isimport = false;
-        
-        // current version
-        if ($importversion == self::getPluginVersion()) {
-            $isimport = true;
-            if ($pa["importcodetags"])
-            {
-                $options["tag"]["code"]      = $data["tag"]["code"];
-                $options["tag"]["line"]      = $data["tag"]["line"];
-                $options["tag"]["language"]  = $data["tag"]["language"];
-            }
-            if ($pa["importmainoption"])
-            {
-                $options["geshicss"]                            = $data["geshicss"]; 
-                $options["maincss"]                             = $data["maincss"];
-                $options["keywordref"]                          = $data["keywordref"];
-                $options["tabsize"]                             = $data["tabsize"];    
-                $options["linenumber"]                          = $data["linenumber"]; 
-                $options["collapse"]                            = $data["collapse"];
-                $options["collapsetext"]                        = $data["collapsetext"];
-                $options["lolheadtext"]                         = $data["lolheadtext"];
-                $options["copytext"]                            = $data["copytext"];                  
-                $options["toolbar"]["line"]["sourcewindow"]     = $data["toolbar"]["line"]["sourcewindow"];
-                $options["toolbar"]["line"]["copyclipboard"]    = $data["toolbar"]["line"]["copyclipboard"];
-                $options["toolbar"]["block"]["linenumber"]      = $data["toolbar"]["block"]["linenumber"];
-                $options["toolbar"]["block"]["sourcewindow"]    = $data["toolbar"]["block"]["sourcewindow"];
-                $options["toolbar"]["block"]["copyclipboard"]   = $data["toolbar"]["block"]["copyclipboard"];
-            }
-            switch ($pa["importstyles"])
-            {
-                case "overwrite" :
-                    $options["style"] = $data["style"];
-                    break;
-                    
-                case "ignore";
-                    $options["style"] = array_merge( $options["style"], array_diff_key( $data["style"], $options["style"] ) );
-                    break;
-                    
-                case "rename" :
-                    foreach($data["style"] as $key => $val)
-                {
-                    $newkey = $key;
-                    while (array_key_exists($newkey, $options["style"]))
-                        $newkey = $key."-".strval(mt_rand());
-                    
-                    $options["style"][$newkey] = $val;
-                }
-                    break;
-            }
-        }
-        
-        
-        if (!$isimport)
+        $importopt = import::run( $options, $data, $pa, $importversion, self::getPluginVersion() );
+        if (empty($importopt))
             add_settings_error( "geshisourcecolorer", "option_validate_importversion", __("no data is imported, because the import version matches no import function", "fpx_geshisourcecolorer"), "error");
+        else
+            $options = $importopt;
+        
         return $options;
     }
 
@@ -422,8 +372,11 @@ class render {
     
     static function render_styles()
     {
-        $geshi   = new \GeSHi();
         $options = get_option("fpx_geshisourcecolorer_option");
+        $geshi   = new \GeSHi();
+        $lang    = $geshi->get_supported_languages(true);
+        asort($lang);
+        
         
         // create a list box with names and a hidden field with all styles as a JSON object
         echo "<input name=\"fpx_geshisourcecolorer_option[styles]\" id=\"jsonstyle\" type=\"hidden\" value='".json_encode($options["style"], JSON_FORCE_OBJECT)."' />";
@@ -466,7 +419,7 @@ class render {
         echo "<div class=\"geshisourcecolorer-td\">".__("keyword visited style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-keywordvisited\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></div>";
         echo "<div class=\"geshisourcecolorer-td\">".__("preview test code", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-previewcode\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></div>";
         echo "<div class=\"geshisourcecolorer-td\">".__("preview language", "fpx_geshisourcecolorer")."<select id=\"geshisourcecolorer-previewlanguage\" size=\"1\">";
-        foreach( $geshi->get_supported_languages(true) as $key => $val )
+        foreach( $lang as $key => $val )
             echo "<option value=\"".$key."\">".$val."</option>";
         echo "</select></div>";
         echo "</div>";
