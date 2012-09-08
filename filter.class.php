@@ -148,7 +148,7 @@ class filter {
         $id     = "geshisourcecolorer-line-" . (empty($option["id"]) ? md5($source) : $option["id"]);
         
         $geshi  = new \GeSHi( $source, $option["language"] );
-        self::setGeSHiMainOptions($geshi, $option, $id, "geshisourcecolorer-line");
+        self::setGeSHiMainOptions($geshi, $option, $id, $option["css"]["line"]);
         self::setGeSHiStyle($geshi, $option["style"]);
         self::setGeSHiHeader($geshi, $option, $id, $source);
         
@@ -177,7 +177,7 @@ class filter {
         // create GeSHi instance with code
         $source = self::convertWordpress2Code($pa[4]);
         $id     = "geshisourcecolorer-" . (empty($option["id"]) ? md5($source) : $option["id"]);
-        $class  = "geshisourcecolorer-block";
+        $class  = $option["css"]["block"];
         $action = null;
 
         if ($option["collapse"])

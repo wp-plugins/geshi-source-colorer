@@ -31,9 +31,14 @@ Version: 0.11
 namespace de\flashpixx\geshisourcecolorer;
 
 // ==== constant for developing with the correct path of the plugin ================================================================================
-define(__NAMESPACE__."\LOCALPLUGINFILE", __FILE__);
-//define(__NAMESPACE__."\LOCALPLUGINFILE", WP_PLUGIN_DIR."/geshi-source-colorer/".basename(__FILE__));
-define(__NAMESPACE__."\DEBUG", false);
+//define(__NAMESPACE__."\LOCALPLUGINFILE", __FILE__);
+define(__NAMESPACE__."\LOCALPLUGINFILE", WP_PLUGIN_DIR."/geshi-source-colorer/".basename(__FILE__));
+define(__NAMESPACE__."\DEBUG", true);
+    
+/** TODO
+ * add different styles (dark, eg http://alexgorbatchev.com/SyntaxHighlighter/manual/themes/fadetogrey.html ) with configuration on each code shortcut
+ * add tabbed codes, so different code shortcuts can be grouped in a tabbed window
+ **/
 // =================================================================================================================================================
 
 
@@ -61,9 +66,9 @@ add_action("admin_enqueue_scripts", "de\\flashpixx\\geshisourcecolorer\\initAdmi
 
 add_action("wp_ajax_geshisourcecolorer-preview", "de\\flashpixx\\geshisourcecolorer\\filter::preview");
 add_filter("the_content", "de\\flashpixx\\geshisourcecolorer\\filter::runListOfListings");
-add_filter("the_content", "de\\flashpixx\\geshisourcecolorer\\filter::runCode");
+add_filter("the_content", "de\\flashpixx\\geshisourcecolorer\\filter::runCode", 1000);
 add_filter("the_content", "de\\flashpixx\\geshisourcecolorer\\filter::runCodeBefore", -1000);
-add_filter("the_content", "de\\flashpixx\\geshisourcecolorer\\filter::runCodeLine");
+add_filter("the_content", "de\\flashpixx\\geshisourcecolorer\\filter::runCodeLine", 1000);
 add_filter("the_content", "de\\flashpixx\\geshisourcecolorer\\filter::runCodeLineBefore", -1000);
     
 add_action("admin_menu", "de\\flashpixx\\geshisourcecolorer\\render::adminmenu");
@@ -171,6 +176,14 @@ function install()
                             "sourcewindow"    => false,
                             "copyclipboard"   => true,
                         )
+                ),
+                  
+                // options of the default css class
+                "css"             => array(
+                  
+                        "line"          => "geshisourcecolorer-line",
+                        "block"         => "geshisourcecolorer-block"
+                  
                 ),
                   
                 // style options of the codes

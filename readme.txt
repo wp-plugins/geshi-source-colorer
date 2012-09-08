@@ -9,7 +9,7 @@ License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
 
 
-The plugin can colorize any source in a post or page. Layout and tag names can be set dynamically, so a migration of other plugins is possible
+The plugin can colorize any source in a post or page. There are a lot of possiblities to configurate your code designs.
 
 
 == Description ==
@@ -51,7 +51,8 @@ element. Own styles for different codes can be created and exported / imported i
 
 1. source code view with highlight effect
 2. source code with collapsed view and dynamic highlight effect
-3. setting page with style definition
+3. shows the black style
+4. setting page with style definition
 
 
 == Shortcode ==
@@ -67,6 +68,54 @@ All meta characters are masked, so you can add a own tag strucutre. Take a look 
 <pre>[cc lang="source language"]your source code[/cc]</pre> or the call <pre>[cci lang="source language"]your source code[/cci]</pre>
 You can change in the global plugin option this tags / options, so you don't need a change to your articles, if you update from another plugin. The layout of the code is stored in the plugin options
 (default values), this values can be overwritten by each code tag.
+
+
+== Creating own code layout ==
+
+This section should be a short how-to for creating your own layout style. 
+
+<p>
+First take a look on the "layout.css" in the plugin directory. There are three main section:
+<ol>
+<li>The first section descrips the layout of the table-of-listings (HTML ID "#geshisourcecolorer-lol"). The table is a div container with an unorderd (ul) list</li>
+<li>The second section descriptes globally options:
+    <ul>
+        <li>"geshisourcecolorer-collapse-button" is the class name of the div container, which is shown if a code block is marked with "collapse=true"</li>
+        <li>"geshisourcecolorer" is the global class name of each code block / line, so with this class you can set styles for all codes</li>
+        <li>"toolbar" is the class, which is always within a "geshisourcecolorer", which descripes the toolbar div container</li>
+        <li>"togglelinenumber" is the classname of the button on the toolbar for show / hide the line numbers</li>
+        <li>"copyclipboard" is the classname of the button on the toolbar for clipboard-copy</li>
+        <li>"sourcewindow" is the classname of the button for creating a blank-code-window</li>
+    </ul>
+    These settings can be combined so you can change or overwrite the default values. In the default settings the collapse-button and the images of the toolbar buttons are
+    fixed, so each code block / line has got the same layout. With this structure colors and other layout styles can be seperated.
+</li>
+<li>The third section stores the default color styles of the code blocks / lines eg font-family, border layout, background color... There are two main classes:
+    <ul>
+        <li>"geshisourcecolorer-lines" which is the class name of each code line</li>
+        <li>"geshisourcecolorer-block" which is the class name of each code block</li>
+    </ul>
+    So you can use these classes for creating the style of the container, in which the code is filled in. Both class names are referenced in the plugin settings under the "main options", so
+    you can set in these options the default class name, but also you can use different styles on each code block with the parameter of the shortcuts eg:
+    <pre>[cc lang="your language" css_block="classname"]your code[/cc]</pre>
+    or for the code line
+    <pre>[cci lang="your language" css_line="classname"]your code[/cci]</pre>
+</li>
+</ol>
+These CSS styles defines the <u>container layout</u> of the code bock / line only.
+</p>
+
+<p>The section above shows the layout of the container only, so the next step is the layout of the source code, which is filled in the container. The layout of the source code is
+depended on the style option and/or the language option, which is set by the shotcut. The options "style" and "lang" are used for the style definition (see the FAQ). The style is loaded
+in this order:
+<ul>
+    <li>if the style parameter is set, this style will be used if exists, if not exists the default style is used</li>
+    <li>if the style parameter is not set, the lang value is used to find a style, if no style exists, the default style is used</li>
+</ul>
+To define the (language) styles, take a look into the plugin settings, exspecially the "codestyle" subsection. In this subsection each code style is defined. Each value is a CSS definition,
+so you can use any CSS element to configurate the source code parts.
+</p>
+
 
 
 == Requirements ==
@@ -108,8 +157,7 @@ are also some options, which are set in the tag only:
 </ul>
 
 = Can I change the layout of the code box ? =
-Yes, look at the plugin's "layout.css" and disable the plugin CSS style, than you can use your own layout. If you would like to change only some values, copy the style into your own file first, change your options, 
-disable the plugin style and add your style to the theme header.
+Yes, take a look on "Other Nites", there is a short description fpr changing the layout.
 
 
 = Can I change the HTML ID of the code block ? =
@@ -118,11 +166,6 @@ Yes, see above. You can set the ID with the option flag "id" on the code tag.
 
 = Can I get access to the line numbers with JavaScript ? =
 Yes. Each line within a code block can be addressed with the ID name of the code block followed by "-line number".
-
-
-= Can I modify the buttons on the code toolbar ? =
-Yes, the layout of the toolbar can be modified by the plugin CSS file and for each code block the "toolbar_*" options (see above) can modify the buttons on the
-toolbar (also you can set the default option in the plugin options).
 
 
 = Can I add a table of listings ? =
@@ -140,13 +183,21 @@ Yes, disable all layout information of GeSHi (set the "geshicss" flag to false g
 used, so you can create your own styles.
 
 
-= Can I setup different styles on code lines and code blocks ? =
-Yes, take a look to the "layout.css" of the plugin. There two main styles "geshisourcecolorer-block" and "geshisourcecolorer-line". This styles can be designed different for both code styles.
+= Where are the styles of the codes ? =
+The plugin uses one default style for all codes, because defininng different styles for each theme / theme group is not possible. Also the styles can be different on each language,
+so there are to many possibilities to create the style definition. But the plugin makes it easy to create your style, that can be used with your theme. Open the plugin settings and
+the subsection "code styles". In this section you can set up on each code description an own CSS style. Please don't ask if I can create a style for you, because I don't know the 
+colors of your site. Also a message with a link to other code layout styles is not helpfull. The plugin shows you a very simple method to create a style, so please do it! If you
+have created a style and you think other people can use them also, send me the style definition, than I can add it to the plugin defaults.
 
-
-= Can I change the style of the toolbar on codeblocks and codelines ? =
-Yes, code blocks and code lines have got different styles, so you can change the class "geshisourcecolorer-block toolbar" or "geshisourcecolorer-line toolbar". Both styles are also a
-"geshisourcecolorer" class, so the toolbar can be referenced with "geshisourcecolorer toolbar", this reference can be used for defining only one style for both code blocks.
+= Can I change the layout of the box, in which the source code is shown ? =
+Yes, at the moment there are two styles for code blocks:
+<ol>
+<li>"geshisourcecolorer-block" the default style with white background and greyed numbers</li>
+<li>"geshisourcecolorer-block-black" a black version with black background and white numbers</li>
+</ol>
+You can set this main styles in the main options under class name. The code line can be also layouted, but I don't create a different style for code lines, because
+the code line is flowed by the text, so only the "style of the source code" is used.
 
 
 = Which HTML element is used by the code box ? = 

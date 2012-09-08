@@ -20,6 +20,7 @@
 **/
 
 
+/* ==== table of listings styles ========================================================================== */
 /** style for the "list of listings" **/
 #geshisourcecolorer-lol {
     background: #efefef;
@@ -46,90 +47,66 @@
     width: 100%;
     padding-bottom: 0.5em;
 }
+/* ======================================================================================================== */
 
 
 
-/** main code line layout **/
+/* ==== global configuration eg toolbar images ============================================================ */
+/** style of a code line **/
 .geshisourcecolorer-line
 {   
     display: inline-block;
-    font-family: sans-serif;
 }
 
 /** style of the which is shown on collapsed code blocks **/
-.geshisourcecolorer-collapse-button {
+.geshisourcecolorer-collapse-button
+{
     cursor: pointer;
 }
 
-/** main code block layout **/
-.geshisourcecolorer-block {}
-
-/** create the codelines with a inside list, line breakes
- * are corrected
- * @note only the line number shoudl be styled, so we colorize
- * the line content
- **/
-.geshisourcecolorer-block ol
-{
-    border-width: 1px;
-    border-color: #ababab;
-    border-style: solid;
-    list-style-position: outside;
-    margin-left: 0;
-    padding-left: 0;
-    background: #efefef;
-}
-
-/** set the font family only to the code lines **/
-.geshisourcecolorer-block ol li
+/** define the main style of the code boxex **/
+.geshisourcecolorer
 {
     font-family: sans-serif;
     font-size: small;
     line-height: 1.25em;
-    background: #ffffff;
-    margin-left: 3em;
 }
 
+/** define the main style of the code list (use the margin & padding for set the number position) **/
+.geshisourcecolorer ol
+{
+    list-style-position: outside;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+/** define the main style of each code list entry **/
+.geshisourcecolorer ol li
+{
+    line-height: 1.25em;
+    margin-left: 3em;
+}    
 
 
-
-/* default value of the toolbar
- * @warn the toolbar need not have the "visibility: hidden" value,
- * in this case jQuery can not fade the toolbar
-**/
+/** style of the toolbar on each block **/
 .geshisourcecolorer .toolbar
 {
-    background-color: #dddddd;
     position: absolute;
     z-index: 10;
-    border-width: 1px;
-    border-color: #6a6a6a;
-    border-style: solid;
-    border-radius: 5px;
-    border-collapse: separate;
-    border-spacing: 2px;
     width: auto;
     display: table;
     height: 30px;
     padding: 2px;
 }
 
-/** default settings of the menu elements **/
-.geshisourcecolorer .toolbar div {
+
+/** style of each button on the toolbal **/
+.geshisourcecolorer .toolbar div 
+{
     cursor: pointer;
     background-repeat: no-repeat;
     background-position: center center;
-    border-width: 1px;
-    border-color: #6a6a6a;
-    border-style: solid;
-    border-radius: 3px;
     display: table-cell;
-    padding: 1px;
-}
-
-/** hover effect of the menu elements **/
-.geshisourcecolorer .toolbar div:hover {
-    background-color: #ababab;
 }
 
 /** style of the "toggle line number" button **/
@@ -155,4 +132,83 @@
     height: 20px;
     width: 20px;
 }
+/* ======================================================================================================== */
+
+
+/* ==== default style (white background, grey numbers) ==================================================== */
+.geshisourcecolorer-block ol
+{
+    border-width: 1px;
+    border-color: #ababab;
+    border-style: solid;
+    background: #efefef;
+}
+
+.geshisourcecolorer-block ol li
+{
+    background: #ffffff;
+}
+
+.geshisourcecolorer-block .toolbar
+{
+    background-color: #dddddd;
+    border-width: 1px;
+    border-color: #6a6a6a;
+    border-style: solid;
+    border-radius: 5px;
+    border-collapse: separate;
+    border-spacing: 2px;
+}
+
+.geshisourcecolorer-block .toolbar div {
+    border-width: 1px;
+    border-color: #6a6a6a;
+    border-style: solid;
+    border-radius: 3px;
+    padding: 1px;
+}
+
+.geshisourcecolorer-block .toolbar div:hover {
+    background-color: #ababab;
+}
+/* ======================================================================================================== */
  
+ 
+/* ==== black layout (black background, white numbers) ==================================================== */
+.geshisourcecolorer-block-black ol
+{
+    border-width: 1px;
+    border-color: #ffffff;
+    border-style: solid;
+    background: #333333;
+}
+
+.geshisourcecolorer-block-black ol li
+{
+    background: #000000;
+    margin-left: 3em;
+}
+
+.geshisourcecolorer-block-black .toolbar
+{
+    background-color: #eeeeee;
+    border-width: 1px;
+    border-color: #333333;
+    border-style: solid;
+    border-radius: 5px;
+    border-collapse: separate;
+    border-spacing: 2px;
+}
+
+.geshisourcecolorer-block-black .toolbar div {
+    border-width: 1px;
+    border-color: #333333;
+    border-style: solid;
+    border-radius: 3px;
+    padding: 1px;
+}
+
+.geshisourcecolorer-block-black .toolbar div:hover {
+    background-color: #aaaaaa;
+}
+/* ======================================================================================================== */

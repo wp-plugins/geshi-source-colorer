@@ -36,7 +36,7 @@ class import {
         if (round($importversion,2) == round($pluginversion,2))
             return self::SelfVersion($option, $data, $pa);
         
-        if (round($importversion,2) == 0.10)
+        if ( (round($importversion,2) == 0.10) || (round($importversion,2) == 0.11) )
             return self::Version01($option, $data, $pa);
         
         return null;
@@ -73,6 +73,8 @@ class import {
             $options["toolbar"]["block"]["linenumber"]      = $data["toolbar"]["block"]["linenumber"];
             $options["toolbar"]["block"]["sourcewindow"]    = $data["toolbar"]["block"]["sourcewindow"];
             $options["toolbar"]["block"]["copyclipboard"]   = $data["toolbar"]["block"]["copyclipboard"];
+            $options["css"]["line"]                         = $data["css"]["line"];
+            $options["css"]["block"]                        = $data["css"]["block"];
         }
         switch ($pa["importstyles"])
         {
@@ -100,7 +102,7 @@ class import {
     }
     
     
-    /** imports the data of the version 0.1
+    /** imports the data of the version 0.1 & 0.11
      * @param $option input options (array)
      * @param $data array with import data
      * @param $pa settings for the import (array)

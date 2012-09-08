@@ -55,6 +55,8 @@ class render {
         add_settings_field("tabsize",           __("tabulator size", "fpx_geshisourcecolorer")." <em>[tabsize]</em>",                          get_class()."::render_tabsize",           "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");
         add_settings_field("copyclipboardtext", __("copy-clipboard message text", "fpx_geshisourcecolorer")." <em>[copytext]</em>",            get_class()."::render_clipboardcopytext", "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");
         add_settings_field("lolheadtext",       __("header text of the list of listings", "fpx_geshisourcecolorer"),                           get_class()."::render_lolheadtext",       "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
+        add_settings_field("blockcss",          __("css class name of the code blocks", "fpx_geshisourcecolorer")." <em>[css_block]</em>",     get_class()."::render_codeblockcss",      "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
+        add_settings_field("linecss",           __("css class name of the code lines", "fpx_geshisourcecolorer")." <em>[css_line]</em>",       get_class()."::render_codelinecss",       "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
   
         
         add_settings_section("fpx_geshisourcecolorer_option",  __("code block toolbar", "fpx_geshisourcecolorer"),       get_class()."::render_codeblocktoolbarsection",          "fpx_geshisourcecolorer_optioncodeblocktoolbar");
@@ -98,12 +100,17 @@ class render {
         if ( (!isset($pa["tag_language"])) ||(empty($pa["tag_language"])) || (preg_match("/\s+/", $pa["tag_language"])) )
             add_settings_error( "geshisourcecolorer", "option_validate_languagetag", __("language tag need not to be empty or have any spaces", "fpx_geshisourcecolorer"), "error");
         
-        if ( (!isset($pa["tabsize"])) ||(empty($pa["tabsize"])) || (!is_numeric($pa["tabsize"])) || ($pa["tabsize"] < 0))
+        if ( (!isset($pa["tabsize"])) || (empty($pa["tabsize"])) || (!is_numeric($pa["tabsize"])) || ($pa["tabsize"] < 0))
             add_settings_error( "geshisourcecolorer", "option_validate_tabsize", __("tabs size need not to be empty, must be numeric and must be equal and greater than zero", "fpx_geshisourcecolorer"), "error");
         if ( (!isset($pa["copytext"])) || (empty($pa["copytext"])) )
             add_settings_error( "geshisourcecolorer", "option_validate_copytext", __("copy-clipboard message text need not to be empty", "fpx_geshisourcecolorer"), "error");
         if ( (!isset($pa["lolheadtext"])) || (empty($pa["lolheadtext"])) )
             add_settings_error( "geshisourcecolorer", "option_validate_lolheadtext", __("list-of-listings header text need not to be empty", "fpx_geshisourcecolorer"), "error");
+        if ( (!isset($pa["css_line"])) || (empty($pa["css_line"])) )
+            add_settings_error( "geshisourcecolorer", "option_validate_cssline", __("css class name of the code line need not to be empty", "fpx_geshisourcecolorer"), "error");
+        if ( (!isset($pa["css_line"])) || (empty($pa["css_block"])) )
+            add_settings_error( "geshisourcecolorer", "option_validate_cssline", __("css class name of the code block need not to be empty", "fpx_geshisourcecolorer"), "error");
+        
         
         // set the option values into the result array (return the default options, if an error occures)
         $options = $oldoptions = get_option("fpx_geshisourcecolorer_option");
@@ -122,6 +129,8 @@ class render {
         $options["tabsize"]                             = intval($pa["tabsize"]);
         $options["copytext"]                            = $pa["copytext"];
         $options["lolheadtext"]                         = $pa["lolheadtext"];
+        $options["css"]["line"]                         = $pa["css_line"];
+        $options["css"]["block"]                        = $pa["css_block"];
         
         $options["geshicss"]                            = isset($pa["geshicss"]) && (!empty($pa["geshicss"]));
         $options["maincss"]                             = isset($pa["maincss"]) && (!empty($pa["maincss"]));
@@ -318,6 +327,18 @@ class render {
         echo "<input name=\"fpx_geshisourcecolorer_option[lolheadtext]\" size=\"30\" type=\"text\" value=\"".$options["lolheadtext"]."\" />";
     }
     
+    static function render_codeblockcss()
+    {
+        $options = get_option("fpx_geshisourcecolorer_option");
+        echo "<input name=\"fpx_geshisourcecolorer_option[css_block]\" size=\"30\" type=\"text\" value=\"".$options["css"]["block"]."\" />";
+    }
+    
+    static function render_codelinecss()
+    {
+        $options = get_option("fpx_geshisourcecolorer_option");
+        echo "<input name=\"fpx_geshisourcecolorer_option[css_line]\" size=\"30\" type=\"text\" value=\"".$options["css"]["line"]."\" />";
+    }
+    
     
     
     static function render_codeblocktoolbarsection()
@@ -387,6 +408,8 @@ class render {
         echo "<div class=\"geshisourcecolorer-td\">";
         echo "<input id=\"geshisourcecolorer-stylesave\" type=\"button\" value=\"".__("store style", "fpx_geshisourcecolorer")."\" />";
         echo "<input id=\"geshisourcecolorer-styledelete\" type=\"button\" value=\"".__("delete style", "fpx_geshisourcecolorer")."\" /></div>";
+        echo "<input id=\"geshisourcecolorer-stylerename\" type=\"button\" value=\"".__("rename style", "fpx_geshisourcecolorer")."\" /></div>";
+        echo "<input id=\"geshisourcecolorer-stylecopy\" type=\"button\" value=\"".__("copy style", "fpx_geshisourcecolorer")."\" /></div>";
         echo "<input id=\"geshisourcecolorer-stylepreview\" type=\"button\" value=\"".__("preview style", "fpx_geshisourcecolorer")."\" /></div>";
         echo "</div>";
          
