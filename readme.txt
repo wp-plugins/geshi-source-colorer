@@ -28,13 +28,15 @@ element. Own styles for different codes can be created and exported / imported i
 * free code style definition on the given language
 * multi- or singleline code block on one page with individual configuration
 * global CSS style definition (code block and toolbar)
+* theme based individual CSS and JavaScript files
 * static & dynamic highlighting (hover effect on every DOM with jQuery possible)
 * table of listing on each page with anchor elements
 * individual configuration on the code block hover toolbar with enabling / disabling line numbers, open code in a blank window, copy code to clipboard, collapsed view etc.
 * collapsed view of the code with jQuery expand / collapsed action
 * keyword references to the language definition
 * individual code tab size
-* export / import function with dynamic style renaming 
+* export / import function with dynamic style renaming (over different plugin versions)
+* tab view / browsing of code blocks (different code blocks can be collected in one global container and each code will be referenced by a individual tab)
 * automatic choice of the codestyle on the language name
 * individual language definitions with GeSHi
 * individual access with JavaScript and jQuery to the code blocks
@@ -52,7 +54,8 @@ element. Own styles for different codes can be created and exported / imported i
 1. source code view with highlight effect
 2. source code with collapsed view and dynamic highlight effect
 3. shows the black style
-4. setting page with style definition
+4. tab view of code blocks 
+5. setting page with style definition
 
 
 == Shortcode ==
