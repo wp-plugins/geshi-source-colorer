@@ -31,9 +31,9 @@ Version: 0.11
 namespace de\flashpixx\geshisourcecolorer;
 // http://justfreetemplates.com/blog/2009/08/31/ultra-simple-jquery-tabs.html
 // ==== constant for developing with the correct path of the plugin ================================================================================
-//define(__NAMESPACE__."\LOCALPLUGINFILE", __FILE__);
-define(__NAMESPACE__."\LOCALPLUGINFILE", WP_PLUGIN_DIR."/geshi-source-colorer/".basename(__FILE__));
-define(__NAMESPACE__."\DEBUG", true);
+define(__NAMESPACE__."\LOCALPLUGINFILE", __FILE__);
+//define(__NAMESPACE__."\LOCALPLUGINFILE", WP_PLUGIN_DIR."/geshi-source-colorer/".basename(__FILE__));
+define(__NAMESPACE__."\DEBUG", false);
 // =================================================================================================================================================
 
 
@@ -97,6 +97,18 @@ function initScripts()
     $option = get_option("fpx_geshisourcecolorer_option");
     if ($option["maincss"])
         wp_enqueue_style( "geshisourcecolorer_style" );
+    
+    
+    // check theme files, if there is a "geshi-source-colorer.js" and/or a "geshi-source-colorer.css" within the theme directory, we include the files
+    wp_register_style( "geshisourcecolorer_userstyle", get_template_directory_uri()."/geshi-source-colorer.css" );
+    $css = get_theme_root()."/".get_template()."/geshi-source-colorer.css";
+    if (file_exists($css) && is_file($css))
+        wp_enqueue_style( "geshisourcecolorer_userstyle" );
+    
+    wp_register_script( "geshisourcecolorer_userfunction", get_template_directory_uri()."/geshi-source-colorer.js", array("geshisourcecolorer_function" ) );
+    $js = get_theme_root()."/".get_template()."/geshi-source-colorer.js";
+    if (file_exists($js) && is_file($js))
+        wp_enqueue_script( "geshisourcecolorer_userfunction" );
 }
     
     

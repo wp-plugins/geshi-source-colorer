@@ -107,7 +107,8 @@ The plugin has got two container styles that can be used:
 <li>"geshisourcecolorer-block" it is a style with white background and greyed line numbers</li>
 <li>"geshisourcecolorer-block-black" a black style like Emacs, with black background and white line numbers</li>
 </ul>
-These CSS styles defines the <u>container layout</u> of the code bock / line only.
+These CSS styles defines the <u>container layout</u> of the code bock / line only. <u>Store your own layout style in a CSS file within your theme directory with the name "geshi-source-colorer.css", because
+the plugin tries to find the file and include the automatically.</u>
 </p>
 
 <p>The section above shows the layout of the container only, so the next step is the layout of the source code, which is filled in the container. The layout of the source code is
@@ -134,6 +135,7 @@ so you can use any CSS element to configurate the source code parts.
 = 0.12 =
 
 * add class definition for styles
+* add themeable JavaScript and CSS file
 * add a black styles
 * add tabbed code blocks
 
@@ -168,7 +170,7 @@ are also some options, which are set in the tag only:
 </ul>
 
 = Can I change the layout of the code box ? =
-Yes, take a look on "Other Nites", there is a short description fpr changing the layout.
+Yes, take a look on "Other Notes", there is a short description fpr changing the layout.
 
 
 = Can I change the HTML ID of the code block ? =
@@ -201,6 +203,11 @@ Yes, the plugin has got two styles:
 <li>"geshisourcecolorer-block-black" a black style like Emacs, with black background and white line numbers</li>
 </ul>
 Set up one of these styles on the plugin setting page in the main menu under "css class name of the code blocks container" (also the line style). 
+
+
+= How can I include my own CSS style or JavaScript file ? =
+The plugin can include your file automatically. Store your CSS file in your (parent) theme directory with the name "geshi-source-colorer.css". The JavaScript file
+must be stored in the (parent) theme directory with the name "geshi-source-colorer.js". The plugin finds the files and include them.
 
 
 = Where are the styles of the codes ? =
