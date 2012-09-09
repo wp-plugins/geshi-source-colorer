@@ -137,6 +137,7 @@ so you can use any CSS element to configurate the source code parts.
 
 = 0.12 =
 
+* change translation
 * add class definition for styles
 * add themeable JavaScript and CSS file
 * add a black styles

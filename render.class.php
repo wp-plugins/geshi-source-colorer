@@ -208,12 +208,11 @@ class render {
         return $options;
     }
 
-
     /** render the option page **/
     static function renderMain()
     {
         echo "<div class=\"wrap\"><h2>GeSHi Source Colorer ".__("Configuration", "fpx_geshisourcecolorer")."</h2>\n";
-        echo "<p>".__("The options here define the global states of the plugin, all option, on which brackets [] are added, can be set to the tag call. Each source code can be configurated individual with the options. The plugin options can be exported and imported from another version. The values will be converted to the plugin, so you can use this option to copy your styles or backup the data on plugin updates. Options can be shown / hide by a click on the header. The installed GeSHi version is", "fpx_geshisourcecolorer")." ".GESHI_VERSION." ".__("the supported languages can be found on", "fpx_geshisourcecolorer")." <a href=\"http://qbnz.com/highlighter/\">".__("GeSHi's project page", "fpx_geshisourcecolorer")."</a></p>";
+        echo "<p>".sprintf(__("The options here define the global states of the plugin, all option, on which brackets [] are added, can be set to the tag call. Each source code can be configurated individual with the options. The plugin options can be exported and imported from another version. The values will be converted to the plugin, so you can use this option to copy your styles or backup the data on plugin updates. Options can be shown / hide by a click on the header. The installed GeSHi version is %s and the supported languages can be found on <a href=\"http://qbnz.com/highlighter/\">GeSHi's project page</a>", "fpx_geshisourcecolorer"), GESHI_VERSION)."</p>";
         echo "<form method=\"post\" action=\"options.php\">";
         settings_fields("fpx_geshisourcecolorer_option");
         
@@ -387,7 +386,7 @@ class render {
     
     static function render_stylesection()
     {
-        echo __("Within this subsection you can define your code styles. Each style definition must have a name. The plugin indentify the style, which is setup to a code block, with the name in lower-case. The plugin tries to get the style, that is set with the name first. If no style is found, the plugin tries to get a style with the name of the code language, if also no style is found, the default style is used. The default style can not be deleted, but it can be modified. The styles are saved when the plugin settings are stored, so a click to \"store style\" or \"delete style\" updates / removes the style on the list only. You can use any CSS element for descripe your style. You can take a preview of your style, add some example code into the field and choose a style definition.", "fpx_geshisourcecolorer");
+        echo __("Within this subsection you can define your code styles. Each style definition must have a name. The plugin indentify the style, which is setup to a code block, with the name in lower-case. The plugin tries to get the style, that is set with the name first. If no style is found, the plugin tries to get a style with the name of the code language, if also no style is found, the default style is used. The default style can not be deleted, but it can be modified. The styles are saved when the plugin settings are stored, so a click to \"store style\" or \"delete style\" updates / removes the style on the list only. Rename or copy of a style can be done with saving under a new name and erasure. You can use any CSS element of your style description. You can take a preview of your style, add some example code into the field and choose a language definition.", "fpx_geshisourcecolorer");
         echo "<div id=\"geshisourcecolorer-examplecode\"></div>";
     }
     

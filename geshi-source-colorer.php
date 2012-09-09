@@ -31,8 +31,8 @@ Version: 0.11
 namespace de\flashpixx\geshisourcecolorer;
 // http://justfreetemplates.com/blog/2009/08/31/ultra-simple-jquery-tabs.html
 // ==== constant for developing with the correct path of the plugin ================================================================================
-define(__NAMESPACE__."\LOCALPLUGINFILE", __FILE__);
-//define(__NAMESPACE__."\LOCALPLUGINFILE", WP_PLUGIN_DIR."/geshi-source-colorer/".basename(__FILE__));
+//define(__NAMESPACE__."\LOCALPLUGINFILE", __FILE__);
+define(__NAMESPACE__."\LOCALPLUGINFILE", WP_PLUGIN_DIR."/geshi-source-colorer/".basename(__FILE__));
 define(__NAMESPACE__."\DEBUG", false);
 // =================================================================================================================================================
 
