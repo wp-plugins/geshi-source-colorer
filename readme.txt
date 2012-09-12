@@ -67,7 +67,7 @@ so the plugin can create the correct expression for modifing the content. There 
 <li>%p is the subsitution for the parameters, like a key-value pair. This placeholder represents the parameter string eg: key1="value" key2="value"</li>
 <li>%s is a placeholder for any kind of spaces. You need this placeholder to create a space between the name of the tag and the parameter list. This placeholder represent one or more than one space</li>
 </ul>
-All meta characters are masked, so you can add a own tag strucutre. Take a look to the plugin's setting page, the defalut values are used within this documentation. Add to your post or page a tag
+All meta characters are masked, so you can add a own tag structure. Take a look to the plugin's setting page, the defalut values are used within this documentation. Add to your post or page a tag
 <pre>[cc lang="source language"]your source code[/cc]</pre> or the call <pre>[cci lang="source language"]your source code[/cci]</pre>
 You can change in the global plugin option this tags / options, so you don't need a change to your articles, if you update from another plugin. The layout of the code is stored in the plugin options
 (default values), this values can be overwritten by each code tag.
@@ -84,6 +84,8 @@ First take a look on the "layout.css" in the plugin directory. There are three m
 <li>The second section descriptes globally options:
     <ul>
         <li>"geshisourcecolorer-collapse-button" is the class name of the div container, which is shown if a code block is marked with "collapse=true"</li>
+        <li>"geshisourcecolorer-tab" is the class name of the div, which is stored all div container of a tab view</li>
+        <li>"tabmenu" is the container div, which shows the tab menu, it is always stored within the geshisourcecolorer-tab</li>
         <li>"geshisourcecolorer" is the global class name of each code block / line, so with this class you can set styles for all codes</li>
         <li>"toolbar" is the class, which is always within a "geshisourcecolorer", which descripes the toolbar div container</li>
         <li>"togglelinenumber" is the classname of the button on the toolbar for show / hide the line numbers</li>
@@ -137,7 +139,9 @@ so you can use any CSS element to configurate the source code parts.
 
 = 0.12 =
 
+* scripts are loaded only on pages with code
 * change translation
+* language detected fixed
 * add class definition for styles
 * add themeable JavaScript and CSS file
 * add a black styles
@@ -166,6 +170,7 @@ are also some options, which are set in the tag only:
 <li>keywordcase           : sets all keywords to lower or upper case. An empty value leaves the code untouched [allowed values: upper | lower | ""]</li>
 <li>id                    : set the unique ID of the code block [allowed values: every string, default value: geshisourcecolorer-MD5 hash of the source] </li>
 <li>style                 : sets the style of the code. If this option is not set, the plugin tries to find a style which is named with the language name (lower-case). If the style is not found, it uses the default style</li>
+<li>tab                   : sets the information, which code blocks should be collected in one container. The option value of this field is a class name and a name, which is shown in the item [allowed value: string value in this structure "classname tabtext"]</li>
 <li>lol                   : name of the source code that is shown within the list of listing (if this flag isn't set or empty, the code is not shown on the list) [allowed values: string value]</li>
 <li>lolhead               : shows the name, which is set by the list of listing option [allowed values: true | false]</li>
 <li>toolbar_blankwindow   : this option enables / disables the button for creating a text window with the source code [allowed values: true | false] </li>
@@ -188,6 +193,11 @@ Yes. Each line within a code block can be addressed with the ID name of the code
 = Can I add a table of listings ? =
 Yes, you can create a "list of listings" with the call <pre>[lol]</pre>. This will add a div to your page and a jQuery call fills the source data into the
 the div after the page have been loaded. The layout of this list is stored in the main CSS file. Feel free to change your layout.
+
+
+= Can I collecte different code blocks into one container ? =
+Yes, use the tag option "tab", which create one container and add all other code blocks with the same name into this container. The value is "classname name of your code".
+All code blocks with equal classnames are grouped and a tab menu is created, each item of the menu shows the text which is set after the first space in the tab option.
 
 
 = My language type is not supported. Can I add my own language file ? =

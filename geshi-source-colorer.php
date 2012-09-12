@@ -33,7 +33,7 @@ namespace de\flashpixx\geshisourcecolorer;
 // ==== constant for developing with the correct path of the plugin ================================================================================
 //define(__NAMESPACE__."\LOCALPLUGINFILE", __FILE__);
 define(__NAMESPACE__."\LOCALPLUGINFILE", WP_PLUGIN_DIR."/geshi-source-colorer/".basename(__FILE__));
-define(__NAMESPACE__."\DEBUG", false);
+define(__NAMESPACE__."\DEBUG", true);
 // =================================================================================================================================================
 
 
@@ -55,17 +55,17 @@ if (function_exists("load_plugin_textdomain"))
 
     
 // ==== create Wordpress Hooks =====================================================================================================================
-add_action("wp_head", "de\\flashpixx\\geshisourcecolorer\\initHead");
-add_action("wp_enqueue_scripts", "de\\flashpixx\\geshisourcecolorer\\initScripts");
-add_action("admin_enqueue_scripts", "de\\flashpixx\\geshisourcecolorer\\initAdminScripts");
+add_action("init", "de\\flashpixx\\geshisourcecolorer\\initScripts");
+add_filter("the_posts", "de\\flashpixx\\geshisourcecolorer\\activateScripts");
 
 add_action("wp_ajax_geshisourcecolorer-preview", "de\\flashpixx\\geshisourcecolorer\\filter::preview");
 add_filter("the_content", "de\\flashpixx\\geshisourcecolorer\\filter::runListOfListings");
-add_filter("the_content", "de\\flashpixx\\geshisourcecolorer\\filter::runCode", 1000);
-add_filter("the_content", "de\\flashpixx\\geshisourcecolorer\\filter::runCodeBefore", -1000);
-add_filter("the_content", "de\\flashpixx\\geshisourcecolorer\\filter::runCodeLine", 1000);
 add_filter("the_content", "de\\flashpixx\\geshisourcecolorer\\filter::runCodeLineBefore", -1000);
-    
+add_filter("the_content", "de\\flashpixx\\geshisourcecolorer\\filter::runCodeBefore", -1000);
+add_filter("the_content", "de\\flashpixx\\geshisourcecolorer\\filter::runCodeLine");
+add_filter("the_content", "de\\flashpixx\\geshisourcecolorer\\filter::runCode");
+
+add_action("admin_enqueue_scripts", "de\\flashpixx\\geshisourcecolorer\\initAdminScripts");
 add_action("admin_menu", "de\\flashpixx\\geshisourcecolorer\\render::adminmenu");
 add_action("admin_init", "de\\flashpixx\\geshisourcecolorer\\render::optionfields");
         
@@ -84,54 +84,77 @@ function initScripts()
     // jQuery and function script
     wp_register_script( "geshisourcecolorer_zeroclipboard", plugins_url("external/zeroclipboard/ZeroClipboard.min.js", LOCALPLUGINFILE) );
     wp_register_script( "geshisourcecolorer_function", plugins_url("js/function".(DEBUG ? null : ".min").".js", LOCALPLUGINFILE), array("jquery", "geshisourcecolorer_zeroclipboard") );
-    
-    wp_enqueue_script( "jquery" );
-    wp_enqueue_script( "geshisourcecolorer_zeroclipboard" );
-    wp_enqueue_script( "geshisourcecolorer_function" );
-
+    wp_register_style( "geshisourcecolorer_userstyle", get_template_directory_uri()."/geshi-source-colorer.css" );
     
     // CSS script
     wp_register_style( "geshisourcecolorer_style", plugins_url("css/layout".(DEBUG ? null : ".min").".css", LOCALPLUGINFILE) );
-    
-    // include only this files, which are needed
-    $option = get_option("fpx_geshisourcecolorer_option");
-    if ($option["maincss"])
-        wp_enqueue_style( "geshisourcecolorer_style" );
-    
-    
-    // check theme files, if there is a "geshi-source-colorer.js" and/or a "geshi-source-colorer.css" within the theme directory, we include the files
-    wp_register_style( "geshisourcecolorer_userstyle", get_template_directory_uri()."/geshi-source-colorer.css" );
-    $css = get_theme_root()."/".get_template()."/geshi-source-colorer.css";
-    if (file_exists($css) && is_file($css))
-        wp_enqueue_style( "geshisourcecolorer_userstyle" );
-    
     wp_register_script( "geshisourcecolorer_userfunction", get_template_directory_uri()."/geshi-source-colorer.js", array("geshisourcecolorer_function" ) );
-    $js = get_theme_root()."/".get_template()."/geshi-source-colorer.js";
-    if (file_exists($js) && is_file($js))
-        wp_enqueue_script( "geshisourcecolorer_userfunction" );
 }
     
     
-/** plugin administration page initialization **/
-function initAdminScripts()
+/** set up the scripts only if needed
+ * @param $posts post array
+ **/
+function activateScripts($posts)
 {
-    // jQuery and function script
-    wp_register_script( "geshisourcecolorer_administration", plugins_url("js/administration".(DEBUG ? null : ".min").".js", LOCALPLUGINFILE), array("jquery") );
+    // disable scripts on admin pages or if post is empty
+    if ( (is_admin()) || (empty($posts)) )
+        return $posts;
+    
+    // check the posts if the filter shortcut it found
+    $option = get_option("fpx_geshisourcecolorer_option");
+    foreach($posts as $post)
+        if ( (preg_match( filter::createFilterRegEx($option["tag"]["code"]), $post->post_content )) || (preg_match( filter::createFilterRegEx($option["tag"]["line"]), $post->post_content )) )
+        {
+            add_action("wp_head", "de\\flashpixx\\geshisourcecolorer\\initHead");
+            
+            wp_enqueue_script( "jquery" );
+            wp_enqueue_script( "geshisourcecolorer_zeroclipboard" );
+            wp_enqueue_script( "geshisourcecolorer_function" );
+            
+            if ($option["maincss"])
+                wp_enqueue_style( "geshisourcecolorer_style" );
+            
+            // check theme files, if there is a "geshi-source-colorer.js" and/or a "geshi-source-colorer.css" within the theme directory, we include the files
+            $css = get_theme_root()."/".get_template()."/geshi-source-colorer.css";
+            if (file_exists($css) && is_file($css))
+                wp_enqueue_style( "geshisourcecolorer_userstyle" );
+            
+            $js = get_theme_root()."/".get_template()."/geshi-source-colorer.js";
+            if (file_exists($js) && is_file($js))
+                wp_enqueue_script( "geshisourcecolorer_userfunction" );            
         
-    wp_enqueue_script( "geshisourcecolorer_administration" );
-
-    wp_localize_script( "geshisourcecolorer_administration", "geshisourcecolorer_messages", array(
-        "defaultdelete"      => __("default style can not be deleted", "fpx_geshisourcecolorer"),
-        "save"               => __("save this style under a new name or use the same name for overriding", "fpx_geshisourcecolorer"),
-        "previewemptycode"   => __("The preview code is empty. Please add some code lines", "fpx_geshisourcecolorer")
-    ));
+            break;
+        }
+    
+    // return post array
+    return $posts;
+}
     
     
-    
+/** plugin administration page initialization
+ * @param $hook hook name of the enquere call
+ **/
+function initAdminScripts($hook)
+{
     // CSS script
     wp_register_style( "geshisourcecolorer_adminstyle", plugins_url("css/administration".(DEBUG ? null : ".min").".css", LOCALPLUGINFILE) );
     
-    wp_enqueue_style( "geshisourcecolorer_adminstyle" );
+    // jQuery and function script
+    wp_register_script( "geshisourcecolorer_administration", plugins_url("js/administration".(DEBUG ? null : ".min").".js", LOCALPLUGINFILE), array("jquery") );
+
+    // scripts are only load if needed (injection error supress)
+    if ($hook == "settings_page_fpx_geshisourcecolorer_option") {
+        wp_enqueue_script( "geshisourcecolorer_administration" );
+
+        wp_localize_script( "geshisourcecolorer_administration", "geshisourcecolorer_messages", array(
+            "defaultdelete"      => __("default style can not be deleted", "fpx_geshisourcecolorer"),
+            "save"               => __("save this style under a new name or use the same name for overriding", "fpx_geshisourcecolorer"),
+            "previewemptycode"   => __("The preview code is empty. Please add some code lines", "fpx_geshisourcecolorer")
+        ));
+        
+        wp_enqueue_style( "geshisourcecolorer_adminstyle" );
+    }
 }
     
     
@@ -189,8 +212,9 @@ function install()
                 "css"             => array(
                   
                         "line"          => "geshisourcecolorer-line",
-                        "block"         => "geshisourcecolorer-block"
-                  
+                        "block"         => "geshisourcecolorer-block",
+                        "tab"           => "geshisourcecolorer-tab-default"
+                
                 ),
                   
                 // style options of the codes

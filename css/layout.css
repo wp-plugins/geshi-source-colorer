@@ -50,8 +50,7 @@
 /* ======================================================================================================== */
 
 
-
-/* ==== global configuration eg toolbar images ============================================================ */
+/* ==== global configuration ============================================================================== */
 /** style of a code line **/
 .geshisourcecolorer-line
 {   
@@ -63,7 +62,40 @@
 {
     cursor: pointer;
 }
+/* ======================================================================================================== */
 
+
+/* ==== global tab layout ================================================================================= */
+/** style of the container div of the tab menu **/
+.geshisourcecolorer-tab .tabmenu
+{
+    overflow: hidden;
+}
+
+/** style of the list within the tab container **/
+.geshisourcecolorer-tab .tabmenu ul
+{
+    list-style-type: none;
+    margin: 0;
+}
+
+/** style of the code tab items **/
+.geshisourcecolorer-tab .tabmenu ul li
+{
+    cursor: pointer;
+    display: inline;
+    text-align: center;
+    margin-right: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-family: sans-serif;
+    font-size: small;
+    font-weight: bold;
+}
+/* ======================================================================================================== */
+
+
+/* ==== global code container layout ====================================================================== */
 /** define the main style of the code boxex **/
 .geshisourcecolorer
 {
@@ -76,8 +108,8 @@
 .geshisourcecolorer ol
 {
     list-style-position: outside;
-    margin-left: 0;
-    padding-left: 0;
+    margin: 0;
+    padding: 0;
 }
 
 /** define the main style of each code list entry **/
@@ -86,8 +118,10 @@
     line-height: 1.25em;
     margin-left: 3em;
 }    
+/* ======================================================================================================== */
 
 
+/* ==== global toolbar layout ============================================================================= */
 /** style of the toolbar on each block **/
 .geshisourcecolorer .toolbar
 {
@@ -170,6 +204,34 @@
 
 .geshisourcecolorer-block .toolbar div:hover {
     background-color: #ababab;
+}
+
+.geshisourcecolorer-tab-default
+{
+    border-width: 3px;
+    border-color: #ababab;
+    border-style: solid;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.geshisourcecolorer-tab-default .tabmenu {
+    background:-moz-linear-gradient(top, #efefef, #cfcfcf); 
+    background:-webkit-linear-gradient(top, #efefef, #cfcfcf);
+    background:-o-linear-gradient(top, #efefef, #cfcfcf); 
+    background:-ms-linear-gradient(top, #efefef, #cfcfcf);
+    background:linear-gradient(top, #efefef, #cfcfcf);
+    padding: 0.25em;
+}
+
+.geshisourcecolorer-tab-default .tabmenu ul
+{
+    padding: 0.25em;
+}
+
+.geshisourcecolorer-tab-default .tabmenu .current
+{
+    text-decoration:underline;
 }
 /* ======================================================================================================== */
  

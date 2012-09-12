@@ -110,7 +110,7 @@ class filter {
      * @param $pcTag tag expression
      * @return regular expression
      **/
-    private static function createFilterRegEx($pcTag)
+    static function createFilterRegEx($pcTag)
     {
         // set regular expression for filtering (mask all meta character, and replace the fragments %c% (code), %s% (spaces) and %p% (parameter) )
         $regex  = str_replace("%c", "(.*)", quotemeta($pcTag));
@@ -142,6 +142,7 @@ class filter {
         $option["collapse"]              = false;
         $option["hoverhighlight"]        = array();
         $option["highlight"]             = array();
+        $option["tab"]                   = array();
         
         // create GeSHi instance with code and remove an linebreaks of the source
         $source = str_replace( array("\r\n", "\r", "\n"), null, self::convertWordpress2Code($pa[4]) );      
@@ -173,18 +174,29 @@ class filter {
         $option = self::getParameter($pa[1], "block");
         if (empty($option["language"]))
             return __("no source code language is set", "fpx_geshisourcecolorer");
-
+        
         // create GeSHi instance with code
         $source = self::convertWordpress2Code($pa[4]);
         $id     = "geshisourcecolorer-" . (empty($option["id"]) ? md5($source) : $option["id"]);
         $class  = $option["css"]["block"];
-        $action = null;
-
-        if ($option["collapse"])
+        $prefix = null;
+        $suffix = null;
+        
+        // set collapse data
+        if ( ($option["collapse"]) && (empty($option["tab"])) )
         {
-            $class .= " geshisourcecolorer-collapse";
-            $action = "<div class=\"geshisourcecolorer-collapse-button\" id=\"".$id."-collapse-button\">".$option["collapsetext"]."</div>";
+            $class  .= " geshisourcecolorer-collapse";
+            $prefix .= "<span class=\"geshisourcecolorer-collapse-button\" id=\"".$id."-collapse-button\">".$option["collapsetext"]."</span>";
         }
+        
+        // set tab structure
+        if (!empty($option["tab"]))
+        {
+            $prefix .= "<div class=\"geshisourcecolorer-tab ".$option["css"]["tab"]." ".$option["tab"][0]."\" rel=\"".$option["tab"][1]."\">";
+            $suffix .= "</div>";
+        }
+        
+        
 
         $geshi  = new \GeSHi( $source, $option["language"] );
         self::setGeSHiMainOptions($geshi, $option, $id, $class);
@@ -193,10 +205,15 @@ class filter {
 
         $lc = $geshi->error();
         if (empty($lc))
-                return " ".$action.$geshi->parse_code()." ";
+            return " ".$prefix.$geshi->parse_code().$suffix." ";
+        
         return " <strong>".$lc."</strong> ";
     }
-    
+
+    /** actin that is run before, for replacing all character to HTML elements
+     * @param $pa input array for format
+     * @return replaced data
+     **/
     static function actionBefore($pa)
     {
         if ( (empty($pa)) || (count($pa) < 3) )
@@ -433,10 +450,12 @@ class filter {
         // read the style information, set style to default, if the style option is set
         // check if the style exists, if not, try to get a style that named equal to the
         // language name
-        if ( (isset($param["style"])) && (is_string($param["style"])) )
-            $param["style"] = isset($styles[ $param["style"] ]) ? $styles[ strtolower($param["style"]) ] : $styles["default"];
+        if ( (isset($param["style"])) && (is_string($param["style"])) && (isset($styles[ strtolower($param["style"]) ])) )
+            $param["style"] = $styles[ strtolower($param["style"]) ];
+        elseif ( (isset($param["style"])) && (is_string($param["style"])) && (isset($styles[strtolower($param["language"]) ])) )
+            $param["style"] = $styles[ strtolower($param["language"]) ];
         else
-            $param["style"] = isset($styles[ $param["language"] ]) ? $styles[ strtolower($param["language"]) ] : $styles["default"];
+            $param["style"] = $styles["default"];
         
         
         // check the highlight options and create if needed an array with line data
@@ -453,7 +472,12 @@ class filter {
             $param["hoverhighlight"] = $new;
         } else
             $param["hoverhighlight"] = array();
-
+        
+        // check tabbed setting
+        if ( (isset($param["tab"])) && (is_string($param["tab"])) )
+            $param["tab"] = preg_split("/\s+/", $param["tab"], 2, PREG_SPLIT_NO_EMPTY);
+        else
+            $param["tab"] = array();
         
         // check other options
         if  ( (!isset($param["keywordcase"])) || (!is_string($param["keywordcase"])) )

@@ -57,6 +57,7 @@ class render {
         add_settings_field("lolheadtext",       __("header text of the list of listings", "fpx_geshisourcecolorer"),                           get_class()."::render_lolheadtext",       "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
         add_settings_field("blockcss",          __("css class name of the code blocks container", "fpx_geshisourcecolorer")." <em>[css_block]</em>",     get_class()."::render_codeblockcss",      "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
         add_settings_field("linecss",           __("css class name of the code lines container", "fpx_geshisourcecolorer")." <em>[css_line]</em>",       get_class()."::render_codelinecss",       "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
+        add_settings_field("tabcss",            __("css class name of the tab container", "fpx_geshisourcecolorer"),       get_class()."::render_tabcss",       "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
   
         
         add_settings_section("fpx_geshisourcecolorer_option",  __("code block toolbar", "fpx_geshisourcecolorer"),       get_class()."::render_codeblocktoolbarsection",          "fpx_geshisourcecolorer_optioncodeblocktoolbar");
@@ -110,6 +111,8 @@ class render {
             add_settings_error( "geshisourcecolorer", "option_validate_cssline", __("css class name of the code line need not to be empty", "fpx_geshisourcecolorer"), "error");
         if ( (!isset($pa["css_line"])) || (empty($pa["css_block"])) )
             add_settings_error( "geshisourcecolorer", "option_validate_cssline", __("css class name of the code block need not to be empty", "fpx_geshisourcecolorer"), "error");
+        if ( (!isset($pa["css_tab"])) || (empty($pa["css_tab"])) )
+            add_settings_error( "geshisourcecolorer", "option_validate_csstab", __("css class name of the tab container need not to be empty", "fpx_geshisourcecolorer"), "error");
         
         
         // set the option values into the result array (return the default options, if an error occures)
@@ -131,6 +134,7 @@ class render {
         $options["lolheadtext"]                         = $pa["lolheadtext"];
         $options["css"]["line"]                         = $pa["css_line"];
         $options["css"]["block"]                        = $pa["css_block"];
+        $options["css"]["tab"]                          = $pa["css_tab"];
         
         $options["geshicss"]                            = isset($pa["geshicss"]) && (!empty($pa["geshicss"]));
         $options["maincss"]                             = isset($pa["maincss"]) && (!empty($pa["maincss"]));
@@ -336,6 +340,12 @@ class render {
     {
         $options = get_option("fpx_geshisourcecolorer_option");
         echo "<input name=\"fpx_geshisourcecolorer_option[css_line]\" size=\"30\" type=\"text\" value=\"".$options["css"]["line"]."\" />";
+    }
+    
+    static function render_tabcss()
+    {
+        $options = get_option("fpx_geshisourcecolorer_option");
+        echo "<input name=\"fpx_geshisourcecolorer_option[css_tab]\" size=\"30\" type=\"text\" value=\"".$options["css"]["tab"]."\" />";
     }
     
     

@@ -75,6 +75,7 @@ class import {
             $options["toolbar"]["block"]["copyclipboard"]   = $data["toolbar"]["block"]["copyclipboard"];
             $options["css"]["line"]                         = $data["css"]["line"];
             $options["css"]["block"]                        = $data["css"]["block"];
+            $options["css"]["tab"]                          = $data["css"]["tab"];
         }
         switch ($pa["importstyles"])
         {

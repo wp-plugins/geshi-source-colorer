@@ -28,6 +28,48 @@ jQuery(document).ready( function() {
 
     // hide all collapsed code blocks
     jQuery(".geshisourcecolorer-collapse").hide();
+                       
+    
+    // create code tabs
+    jQuery(".geshisourcecolorer-tab").each( function () {
+        var tabid  = jQuery.trim(jQuery(this).attr("class").split(" ")[2]);
+        var first  = jQuery("."+tabid+":first");
+        var codeid = jQuery(this).find(".geshisourcecolorer:first").attr("id");
+        var item   = jQuery("<li/>").html( jQuery(this).attr("rel") ).attr("rel", codeid);
+                      
+        // copy content on each div, which is not the first into the first div
+        if (jQuery(this).get(0) === first.get(0))
+        {
+            // on the first div create menu
+            var menu = jQuery("<div/>").addClass("tabmenu");
+            menu.prepend( jQuery("<ul/>").append( item.addClass("current") ) );
+            menu.data("code-show", codeid);
+            first.prepend( menu );
+            first.removeAttr("rel");
+                                           
+        } else {
+            // add code to the tabmenu and the ID of the code block to the rel attribute of the menu entry
+            first.find(".tabmenu ul:first").append( item );
+            jQuery(jQuery(this).html()).appendTo(first);
+            jQuery(this).remove();
+            jQuery("#"+codeid).hide();
+        }
+    });
+             
+                       
+    /** toggle action on tab click **/
+    jQuery(".geshisourcecolorer-tab .tabmenu li").click( function() {
+        var active = jQuery(this).parent().find(".current");
+                                                         
+        if ( active.get(0) !== jQuery(this).get(0) )
+        {
+            jQuery("#"+active.attr("rel")).slideToggle("slow");
+            jQuery("#"+jQuery(this).attr("rel")).slideToggle("slow");
+                                                        
+            active.removeClass("current");
+            jQuery(this).addClass("current");
+        }
+    });
 
 
     // click function for hide / view collapsed source code
