@@ -31,9 +31,9 @@ Version: 0.12
 namespace de\flashpixx\geshisourcecolorer;
 
 // ==== constant for developing with the correct path of the plugin ================================================================================
-define(__NAMESPACE__."\LOCALPLUGINFILE", __FILE__);
-//define(__NAMESPACE__."\LOCALPLUGINFILE", WP_PLUGIN_DIR."/geshi-source-colorer/".basename(__FILE__));
-define(__NAMESPACE__."\MINIFY", true);
+//define(__NAMESPACE__."\LOCALPLUGINFILE", __FILE__);
+define(__NAMESPACE__."\LOCALPLUGINFILE", WP_PLUGIN_DIR."/geshi-source-colorer/".basename(__FILE__));
+define(__NAMESPACE__."\MINIFY", false);
 // =================================================================================================================================================
 
 
