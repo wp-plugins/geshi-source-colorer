@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/extend/plugins/geshi-source-colorer
 Author URI: http://flashpixx.de
 Description: The plugin can colorize any source in a post or page. There are a lot of possiblities to configurate your code designs.
 Author: flashpixx
-Version: 0.11
+Version: 0.12
  
  
 #########################################################################
@@ -31,8 +31,8 @@ Version: 0.11
 namespace de\flashpixx\geshisourcecolorer;
 
 // ==== constant for developing with the correct path of the plugin ================================================================================
-//define(__NAMESPACE__."\LOCALPLUGINFILE", __FILE__);
-define(__NAMESPACE__."\LOCALPLUGINFILE", WP_PLUGIN_DIR."/geshi-source-colorer/".basename(__FILE__));
+define(__NAMESPACE__."\LOCALPLUGINFILE", __FILE__);
+//define(__NAMESPACE__."\LOCALPLUGINFILE", WP_PLUGIN_DIR."/geshi-source-colorer/".basename(__FILE__));
 define(__NAMESPACE__."\MINIFY", true);
 // =================================================================================================================================================
 
