@@ -93,52 +93,29 @@ The other options can be found in the plugin settings between the brackets [].
 == Creating own code layout ==
 
 This section should be a short how-to for creating your own layout style. First take a look on the "layout.css" in the plugin directory. There are different sections:
-<ul><li>Each section descrips the layout of the different layout elements of the codes</li>
-
+<ol><li>Each section descrips the layout of the different layout elements of the codes</li>
 <li>The other section descrips the "global" configurations of each element:
-    <ul>
-        <li>"geshisourcecolorer-lol" is the ID of the table of listings</li>
-        <li>"geshisourcecolorer-line" is the class of the code line block</li>
-        <li>"geshisourcecolorer-collapse-button" is the class name of the div container, which is shown if a code block is marked with "collapse=true"</li>
-        <li>"geshisourcecolorer-tab" is the class name of the div, which is stored all div container of a tab view (each tab element is an unorded list)
-            <ul>
-                <li>"tabmenu" is the container div, which shows the tab menu, it is always stored within the geshisourcecolorer-tab</li>
-            </ul>
-        </li>
-        <li>"geshisourcecolorer" is the global class name of each code block / line (the code lines are stored as an ordered list on lines)
-            <ul>
-                <li>"toolbar" is the class, which is always within a "geshisourcecolorer", which descripes the toolbar div container
-                    <ul>
-                        <li>"togglelinenumber" is the classname of the button on the toolbar for show / hide the line numbers</li>
-                        <li>"copyclipboard" is the classname of the button on the toolbar for clipboard-copy</li>
-                        <li>"sourcewindow" is the classname of the button for creating a blank-code-window</li>
-                    </ul>
-                </li>
-            </li>
-        </li>
-    </ul>
-    These settings can be combined so you can change or overwrite the default values. In the default settings the collapse-button and the images of the toolbar buttons are
-    fixed, so each code block / line has got the same layout. With this structure colors and other layout styles can be seperated.
-</li>
-
+<ul><li>"geshisourcecolorer-lol" is the ID of the table of listings</li>
+<li>"geshisourcecolorer-line" is the class of the code line block</li>
+<li>"geshisourcecolorer-collapse-button" is the class name of the div container, which is shown if a code block is marked with "collapse=true"</li>
+<li>"geshisourcecolorer-tab" is the class name of the div, which is stored all div container of a tab view (each tab element is an unorded list)
+<ul><li>"tabmenu" is the container div, which shows the tab menu, it is always stored within the geshisourcecolorer-tab</li></ul>
+</li><li>"geshisourcecolorer" is the global class name of each code block / line (the code lines are stored as an ordered list on lines)
+<ul><li>"toolbar" is the class, which is always within a "geshisourcecolorer", which descripes the toolbar div container
+<ul><li>"togglelinenumber" is the classname of the button on the toolbar for show / hide the line numbers</li>
+<li>"copyclipboard" is the classname of the button on the toolbar for clipboard-copy</li>
+<li>"sourcewindow" is the classname of the button for creating a blank-code-window</li>
+</ul></li></li></li></ul>These settings can be combined so you can change or overwrite the default values. In the default settings the collapse-button and the images of the toolbar buttons are
+fixed, so each code block / line has got the same layout. With this structure colors and other layout styles can be seperated.</li>
 <li>under the global options two style classes with different color layouts a are set:
-    <ul>
-        <li>"geshisourcecolorer-*-default" which is the class name of the default color style (white background, grey lines & hovereffects)</li>
-        <li>"geshisourcecolorer-*-black" which is the class name of dark layout</li>
-    </ul>
-    You can change the coloring on the plugin settings (global) or you can add it with the "css_*" tags on each shortcut.
-</li>
-
-<li>The layout of the source code is depended on the style option and/or the language option, which is set by the shotcut. The shortcut options "style" and "lang" are used for the style definition (see the FAQ).
-The style is loaded in this order:
-<ul>
-    <li>if the style parameter is set, this style will be used if exists, if not exists the default style is used</li>
-    <li>if the style option not set or the style is not found, the lang value is used to find a style, if no style exists, the default style is used</li>
-</ul>
-To define the (language) styles, take a look into the plugin settings, exspecially the "codestyle" subsection. In this subsection each code style is defined. Each value is a CSS definition, so you can use
-any CSS element to configurate the source code parts.
-</li>
-</ul>
+<ul><li>"geshisourcecolorer-*-default" which is the class name of the default color style (white background, grey lines & hovereffects)</li>
+<li>"geshisourcecolorer-*-black" which is the class name of dark layout</li></ul>You can change the coloring on the plugin settings (global) or you can add it with the "css_*" tags on each shortcut.
+</li><li>The layout of the source code is depended on the style option and/or the language option, which is set by the shotcut. The shortcut options "style" and "lang" are used for the style definition (see the FAQ).
+The style is loaded in this order:<ul>
+<li>if the style parameter is set, this style will be used if exists, if not exists the default style is used</li>
+<li>if the style option not set or the style is not found, the lang value is used to find a style, if no style exists, the default style is used</li>
+</ul>To define the (language) styles, take a look into the plugin settings, exspecially the "codestyle" subsection. In this subsection each code style is defined. Each value is a CSS definition, so you can use
+any CSS element to configurate the source code parts.</li></ol>
 
 
 
