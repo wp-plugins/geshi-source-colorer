@@ -210,16 +210,6 @@ colors of your site, so creating different predefined  styles are not usefull. <
 have created a style and you think other people can use them also, send me the style definition, than I can add it to the plugin defaults.
 
 
-= Can I change the layout of the box, in which the source code is shown ? =
-Yes, at the moment there are two styles for code blocks:
-<ol>
-<li>"geshisourcecolorer-block" the default style with white background and greyed numbers</li>
-<li>"geshisourcecolorer-block-black" a black version with black background and white numbers</li>
-</ol>
-You can set this main styles in the main options under class name. The code line can be also layouted, but I don't create a different style for code lines, because
-the code line is flowed by the text, so only the "style of the source code" is used.
-
-
 = Which HTML element is used by the code box ? = 
 GeSHi uses in this plugin an ordered list (ol) and for each code line (li) different span tags. The full code is in a div tag, that uses the classes "geshisourcecolorer"
 (especially "geshisourcecolorer-line" / "geshisourcecolorer-block") and a class named the language name. The toolbar is also stored in a div under the main code div. For
