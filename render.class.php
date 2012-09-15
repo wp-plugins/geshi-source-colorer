@@ -48,6 +48,7 @@ class render {
         add_settings_section("fpx_geshisourcecolorer_option",  __("main options", "fpx_geshisourcecolorer"),                               get_class()."::render_mainsection",   "fpx_geshisourcecolorer_optionmain");
         add_settings_field("maincss",           __("enable / disable plugin css", "fpx_geshisourcecolorer"),                                   get_class()."::render_maincss",           "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");
         add_settings_field("geshicss",          __("enable / disable GeSHi css", "fpx_geshisourcecolorer")." <em>[geshicss]</em>",             get_class()."::render_geshicss",          "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");
+        add_settings_field("visualeditor",      __("enable / disable HTML decode", "fpx_geshisourcecolorer")." <em>[visualeditor]</em>",       get_class()."::render_visualeditor",      "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");
         add_settings_field("keywordref",        __("enable / disable keyword references", "fpx_geshisourcecolorer")." <em>[keywordref]</em>",  get_class()."::render_keywordref",        "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");
         add_settings_field("linenumber",        __("enable / disable line numbers", "fpx_geshisourcecolorer")." <em>[linenumber]</em>",        get_class()."::render_linenumber",        "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option"); 
         add_settings_field("collapse",          __("enable / disable collapse code blocks", "fpx_geshisourcecolorer")." <em>[collapse]</em>",  get_class()."::render_collapse",          "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");              
@@ -57,7 +58,7 @@ class render {
         add_settings_field("lolheadtext",       __("header text of the list of listings", "fpx_geshisourcecolorer"),                           get_class()."::render_lolheadtext",       "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
         add_settings_field("blockcss",          __("css class name of the code blocks container", "fpx_geshisourcecolorer")." <em>[css_block]</em>",     get_class()."::render_codeblockcss",      "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
         add_settings_field("linecss",           __("css class name of the code lines container", "fpx_geshisourcecolorer")." <em>[css_line]</em>",       get_class()."::render_codelinecss",       "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
-        add_settings_field("tabcss",            __("css class name of the tab container", "fpx_geshisourcecolorer"),       get_class()."::render_tabcss",       "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
+        add_settings_field("tabcss",            __("css class name of the tab container", "fpx_geshisourcecolorer")." <em>[css_tab]</em>",       get_class()."::render_tabcss",       "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
   
         
         add_settings_section("fpx_geshisourcecolorer_option",  __("code block toolbar", "fpx_geshisourcecolorer"),       get_class()."::render_codeblocktoolbarsection",          "fpx_geshisourcecolorer_optioncodeblocktoolbar");
@@ -132,6 +133,7 @@ class render {
         $options["tabsize"]                             = intval($pa["tabsize"]);
         $options["copytext"]                            = $pa["copytext"];
         $options["lolheadtext"]                         = $pa["lolheadtext"];
+        $options["visualeditor"]                        = isset($pa["visualeditor"]) && (!empty($pa["visualeditor"]));
         $options["css"]["line"]                         = $pa["css_line"];
         $options["css"]["block"]                        = $pa["css_block"];
         $options["css"]["tab"]                          = $pa["css_tab"];
@@ -274,6 +276,12 @@ class render {
     static function render_mainsection()
     {
         echo __("This option section sets the default values for the code blocks. You can set each value also to the code tags and overload the default option.", "fpx_geshisourcecolorer");
+    }
+    
+    static function render_visualeditor()
+    {
+        $options = get_option("fpx_geshisourcecolorer_option");
+        echo "<input name=\"fpx_geshisourcecolorer_option[visualeditor]\" type=\"checkbox\" value=\"1\" ".($options["visualeditor"] ? "checked" : null)." />";
     }
     
     static function render_geshicss()

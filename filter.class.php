@@ -145,11 +145,11 @@ class filter {
         $option["tab"]                   = array();
         
         // create GeSHi instance with code and remove an linebreaks of the source
-        $source = str_replace( array("\r\n", "\r", "\n"), null, self::convertWordpress2Code($pa[4]) );      
+        $source = self::convertWordpress2Code($pa[4], $option["visualeditor"], true);      
         $id     = "geshisourcecolorer-line-" . (empty($option["id"]) ? md5($source) : $option["id"]);
         
         $geshi  = new \GeSHi( $source, $option["language"] );
-        self::setGeSHiMainOptions($geshi, $option, $id, $option["css"]["line"]);
+        self::setGeSHiMainOptions($geshi, $option, $id, "geshi-source-colorer-line ".$option["css"]["line"]);
         self::setGeSHiStyle($geshi, $option["style"]);
         self::setGeSHiHeader($geshi, $option, $id, $source);
         
@@ -176,7 +176,7 @@ class filter {
             return __("no source code language is set", "fpx_geshisourcecolorer");
         
         // create GeSHi instance with code
-        $source = self::convertWordpress2Code($pa[4]);
+        $source = self::convertWordpress2Code($pa[4], $option["visualeditor"], false);
         $id     = "geshisourcecolorer-" . (empty($option["id"]) ? md5($source) : $option["id"]);
         $class  = $option["css"]["block"];
         $prefix = null;
@@ -195,7 +195,6 @@ class filter {
             $prefix .= "<div class=\"geshisourcecolorer-tab ".$option["css"]["tab"]." ".$option["tab"][0]."\" rel=\"".$option["tab"][1]."\">";
             $suffix .= "</div>";
         }
-        
         
 
         $geshi  = new \GeSHi( $source, $option["language"] );
@@ -263,12 +262,19 @@ class filter {
      * to their normal character, because we don't need other replace options, that has changed the code,
      * exspecially wie subsitute each "</p>" to "\n", because otherwise all space lines are removed
      * @param $pc Wordpress input
+     * @param $visualstudio
+     * @param $singleline
      * @return replaced code
      **/
-    private static function convertWordpress2Code( $pc, $singleline = false )
+    private static function convertWordpress2Code( $pc, $visualstudio, $singleline = false )
     {
         // on a single line we remove all tags
-        $source = $singleline ? $pc : str_replace("</p>", "\n", $pc);
+        $source = $singleline ? str_replace(array("\r\n", "\r", "\n"), null, $pc) : str_replace("</p>", "\n", $pc);
+         
+        // if the visualeditor option is set, the remove HTML entities
+        if ($visualstudio)
+            $source = html_entity_decode($source, ENT_COMPAT, get_option("blog_charset"));
+        
         
         // remove any other HTML tags and deconvert the entities
         $source = trim( html_entity_decode(strip_tags($source), ENT_COMPAT, get_option("blog_charset")));
@@ -499,6 +505,8 @@ class filter {
             $param["linenumber"] = $param["linenumber"] == "true";
         if (!is_bool($param["collapse"]))
             $param["collapse"] = $param["collapse"] == "true";
+        if (!is_bool($param["visualeditor"]))
+            $param["visualeditor"] = $param["visualeditor"] == "true";
         if (!is_bool($param["geshicss"]))
             $param["geshicss"] = $param["geshicss"] == "true";
         if (!is_string($param["keywordref"]))

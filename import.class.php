@@ -63,6 +63,7 @@ class import {
             $options["maincss"]                             = $data["maincss"];
             $options["keywordref"]                          = $data["keywordref"];
             $options["tabsize"]                             = $data["tabsize"];    
+            $options["visualeditor"]                        = $data["visualeditor"]; 
             $options["linenumber"]                          = $data["linenumber"]; 
             $options["collapse"]                            = $data["collapse"];
             $options["collapsetext"]                        = $data["collapsetext"];

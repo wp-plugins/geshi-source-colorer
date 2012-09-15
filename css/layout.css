@@ -29,7 +29,6 @@
     border-style: solid;
     position: relative;
     width: 12em;
-    height: auto;
     padding: 0.2em;
 }
 
@@ -169,8 +168,8 @@
 /* ======================================================================================================== */
 
 
-/* ==== default style (white background, grey numbers) ==================================================== */
-.geshisourcecolorer-block ol
+/* ==== default style (white background, grey numbers, grey tab menu) ====================================== */
+.geshisourcecolorer-block-default ol
 {
     border-width: 1px;
     border-color: #ababab;
@@ -178,12 +177,12 @@
     background: #efefef;
 }
 
-.geshisourcecolorer-block ol li
+.geshisourcecolorer-block-default ol li
 {
     background: #ffffff;
 }
 
-.geshisourcecolorer-block .toolbar
+.geshisourcecolorer-block-default .toolbar, .geshisourcecolorer-line-default .toolbar
 {
     background-color: #dddddd;
     border-width: 1px;
@@ -194,7 +193,7 @@
     border-spacing: 2px;
 }
 
-.geshisourcecolorer-block .toolbar div {
+.geshisourcecolorer-block-default .toolbar div, .geshisourcecolorer-line-default .toolbar div {
     border-width: 1px;
     border-color: #6a6a6a;
     border-style: solid;
@@ -202,15 +201,16 @@
     padding: 1px;
 }
 
-.geshisourcecolorer-block .toolbar div:hover {
+.geshisourcecolorer-block-default .toolbar div:hover, .geshisourcecolorer-line-default .toolbar div:hover {
     background-color: #ababab;
 }
 
 .geshisourcecolorer-tab-default
 {
-    border-width: 3px;
+    border-width: 2px;
     border-color: #ababab;
     border-style: solid;
+    border-radius: 5px;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
 }

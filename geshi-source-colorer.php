@@ -182,6 +182,7 @@ function install()
                 "tabsize"           => 4,
                 "linenumber"        => true,
                 "collapse"          => false,
+                "visualeditor"      => false,
                 "collapsetext"      => __("view source code", "fpx_geshisourcecolorer"),
                 "lolheadtext"       => __("source contents", "fpx_geshisourcecolorer"),
                 "copytext"          => __("source is copied to clipboard", "fpx_geshisourcecolorer"),
@@ -211,8 +212,8 @@ function install()
                 // options of the default css class
                 "css"             => array(
                   
-                        "line"          => "geshisourcecolorer-line",
-                        "block"         => "geshisourcecolorer-block",
+                        "line"          => "geshisourcecolorer-line-default",
+                        "block"         => "geshisourcecolorer-block-default",
                         "tab"           => "geshisourcecolorer-tab-default"
                 
                 ),

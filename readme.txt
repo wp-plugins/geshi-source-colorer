@@ -17,9 +17,10 @@ The plugin can colorize any source in a post or page. There are a lot of possibl
 The plugin creates a colorized view of source code. It uses <a href="http://qbnz.com/highlighter/">GeSHi</a> for creating the layout information and
 allows an individual configuration of the tag values, so that a migration of anonther code syntax highlighter plugin is possible, without changing the article
 data. Additional options are like enabling / disabling line numbers, copy to clipboard and open code in a blank window can be used by a hover toolbar.
-The code blocks on a post / page can be collected to a "list of listings" automatically, each code block can get its own layout style and each code boxes
-can be collapsed / expanded. On a single code box different lines can be highlighted or the highlighting can be added dynamically on hovering a individual DOM
-element. Own styles for different codes can be created and exported / imported into the plugin.
+The code blocks on a post / page can be collected to a "list of listings" automatically or collected in a tab view, each code block can get its own layout
+style and each code boxes can be collapsed / expanded. On a code box different lines can be static highlighted or the highlighting can be added dynamically
+on hovering a individual DOM element. You can define a own JavaScript or CSS file in your theme, so that you can handle different layouts / actions on your
+themes. Own styles for different codes can be created and exported / imported into the plugin.
 
 
 = Features =
@@ -59,18 +60,36 @@ element. Own styles for different codes can be created and exported / imported i
 
 
 == Shortcode ==
-
-The shortcuts / tags are free defined, so here you see the default definition "cc" and "cci". Feel free to change this names. You can define a own style, but you need to pass different placeholders in it,
+<p>The shortcuts / tags are free defined, so here you see the default definition "cc" and "cci". Feel free to change this names. You can define a own style, but you need to pass different placeholders in it,
 so the plugin can create the correct expression for modifing the content. There are three placeholders:
 <ul>
-<li>%c this is the substitution for the source code</li>
-<li>%p is the subsitution for the parameters, like a key-value pair. This placeholder represents the parameter string eg: key1="value" key2="value"</li>
-<li>%s is a placeholder for any kind of spaces. You need this placeholder to create a space between the name of the tag and the parameter list. This placeholder represent one or more than one space</li>
-</ul>
-All meta characters are masked, so you can add a own tag structure. Take a look to the plugin's setting page, the defalut values are used within this documentation. Add to your post or page a tag
+    <li>"%c" this is the substitution for the source code</li>
+    <li>"%p" is the subsitution for the parameters, like a key-value pair. This placeholder represents the parameter string eg: key1="value" key2="value"</li>
+    <li>"%s" is a placeholder for any kind of spaces. You need this placeholder to create a space between the name of the tag and the parameter list. This placeholder represent one or more than one space</li>
+</ul></p>
+<p>All meta characters are masked, so you can add a own tag structure. Take a look to the plugin's setting page, the defalut values are used within this documentation. Add to your post or page a tag
 <pre>[cc lang="source language"]your source code[/cc]</pre> or the call <pre>[cci lang="source language"]your source code[/cci]</pre>
 You can change in the global plugin option this tags / options, so you don't need a change to your articles, if you update from another plugin. The layout of the code is stored in the plugin options
-(default values), this values can be overwritten by each code tag.
+(default values), this values can be overwritten by each code tag. On the  shotcuts you can create different additional options:</p>
+<p>
+<ul>
+    <li>highlight             : is used for static highlighting some code lines. Each line number (started with 1) is spitted by space [allowed values: spaces and numbers]</li>
+    <li>hoverhighlight        : this option can be set more than once and adds a dynamic hover effect to a DOM element for hovering different code lines [allowed valus: class / ID of the DOM element, line numbers split by spaces, CSS style definition]</li>
+    <li>keywordcase           : sets all keywords to lower or upper case. An empty value leaves the code untouched [allowed values: upper | lower | ""]</li>
+    <li>id                    : set the unique ID of the code block [allowed values: every string, default value: geshisourcecolorer-MD5 hash of the source] </li>
+    <li>style                 : sets the style of the code. If this option is not set, the plugin tries to find a style which is named with the language name (lower-case). If the style is not found, it uses the default style</li>
+    <li>tab                   : sets the information, which code blocks should be collected in one container. The option value of this field is a class name and a name, which is shown in the item [allowed value: string value in this structure "classname tabtext"]</li>
+    <li>lol                   : name of the source code that is shown within the list of listing (if this flag isn't set or empty, the code is not shown on the list) [allowed values: string value]</li>
+    <li>lolhead               : shows the name, which is set by the list of listing option [allowed values: true | false]</li>
+    <li>toolbar_blankwindow   : this option enables / disables the button for creating a text window with the source code [allowed values: true | false] </li>
+    <li>toolbar_copyclipboard : this option enables / disables the copt-to-clipboard button [allowed values: true | false]</li>
+    <li>toolbar_linenumber    : this option enables / disables the button for hiding / showing the line numbers [allowed values: true | false]</li>
+</ul>
+The other options can be found in the plugin settings between the brackets [].
+</p>
+
+
+
 
 
 == Creating own code layout ==
@@ -78,54 +97,54 @@ You can change in the global plugin option this tags / options, so you don't nee
 This section should be a short how-to for creating your own layout style. 
 
 <p>
-First take a look on the "layout.css" in the plugin directory. There are three main section:
-<ol>
-<li>The first section descrips the layout of the table-of-listings (HTML ID "#geshisourcecolorer-lol"). The table is a div container with an unorderd (ul) list</li>
-<li>The second section descriptes globally options:
+First take a look on the "layout.css" in the plugin directory. There are different sections:
+<ul>
+<li>Each section descrips the layout of the different layout elements of the codes</li>
+
+<li>The other section descrips the "global" configurations of each element:
     <ul>
+        <li>"geshisourcecolorer-lol" is the ID of the table of listings</li>
+        <li>"geshisourcecolorer-line" is the class of the code line block</li>
         <li>"geshisourcecolorer-collapse-button" is the class name of the div container, which is shown if a code block is marked with "collapse=true"</li>
-        <li>"geshisourcecolorer-tab" is the class name of the div, which is stored all div container of a tab view</li>
-        <li>"tabmenu" is the container div, which shows the tab menu, it is always stored within the geshisourcecolorer-tab</li>
-        <li>"geshisourcecolorer" is the global class name of each code block / line, so with this class you can set styles for all codes</li>
-        <li>"toolbar" is the class, which is always within a "geshisourcecolorer", which descripes the toolbar div container</li>
-        <li>"togglelinenumber" is the classname of the button on the toolbar for show / hide the line numbers</li>
-        <li>"copyclipboard" is the classname of the button on the toolbar for clipboard-copy</li>
-        <li>"sourcewindow" is the classname of the button for creating a blank-code-window</li>
+        <li>"geshisourcecolorer-tab" is the class name of the div, which is stored all div container of a tab view (each tab element is an unorded list)
+            <ul>
+                <li>"tabmenu" is the container div, which shows the tab menu, it is always stored within the geshisourcecolorer-tab</li>
+            </ul>
+        </li>
+        <li>"geshisourcecolorer" is the global class name of each code block / line (the code lines are stored as an ordered list on lines)
+            <ul>
+                <li>"toolbar" is the class, which is always within a "geshisourcecolorer", which descripes the toolbar div container
+                    <ul>
+                        <li>"togglelinenumber" is the classname of the button on the toolbar for show / hide the line numbers</li>
+                        <li>"copyclipboard" is the classname of the button on the toolbar for clipboard-copy</li>
+                        <li>"sourcewindow" is the classname of the button for creating a blank-code-window</li>
+                    </ul>
+                </li>
+            </li>
+        </li>
     </ul>
     These settings can be combined so you can change or overwrite the default values. In the default settings the collapse-button and the images of the toolbar buttons are
     fixed, so each code block / line has got the same layout. With this structure colors and other layout styles can be seperated.
 </li>
-<li>The third section stores the default color styles of the code blocks / lines eg font-family, border layout, background color... There are two main classes:
-    <ul>
-        <li>"geshisourcecolorer-lines" which is the class name of each code line</li>
-        <li>"geshisourcecolorer-block" which is the class name of each code block</li>
-    </ul>
-    So you can use these classes for creating the style of the container, in which the code is filled in. Both class names are referenced in the plugin settings under the "main options", so
-    you can set in these options the default class name, but also you can use different styles on each code block with the parameter of the shortcuts eg:
-    <pre>[cc lang="your language" css_block="classname"]your code[/cc]</pre>
-    or for the code line
-    <pre>[cci lang="your language" css_line="classname"]your code[/cci]</pre>
-</li>
-</ol>
-The plugin has got two container styles that can be used:
-<ul>
-<li>"geshisourcecolorer-block" it is a style with white background and greyed line numbers</li>
-<li>"geshisourcecolorer-block-black" a black style like Emacs, with black background and white line numbers</li>
-</ul>
-These CSS styles defines the <u>container layout</u> of the code bock / line only. <u>Store your own layout style in a CSS file within your theme directory with the name "geshi-source-colorer.css", because
-the plugin tries to find the file and include the automatically.</u>
-</p>
 
-<p>The section above shows the layout of the container only, so the next step is the layout of the source code, which is filled in the container. The layout of the source code is
-depended on the style option and/or the language option, which is set by the shotcut. The options "style" and "lang" are used for the style definition (see the FAQ). The style is loaded
-in this order:
+<li>under the global options two style classes with different color layouts a are set:
+    <ul>
+        <li>"geshisourcecolorer-*-default" which is the class name of the default color style (white background, grey lines & hovereffects)</li>
+        <li>"geshisourcecolorer-*-black" which is the class name of dark layout</li>
+    </ul>
+    You can change the coloring on the plugin settings (global) or you can add it with the "css_*" tags on each shortcut.
+</li>
+
+<li>The layout of the source code is depended on the style option and/or the language option, which is set by the shotcut. The shortcut options "style" and "lang" are used for the style definition (see the FAQ).
+The style is loaded in this order:
 <ul>
     <li>if the style parameter is set, this style will be used if exists, if not exists the default style is used</li>
-    <li>if the style parameter is not set, the lang value is used to find a style, if no style exists, the default style is used</li>
+    <li>if the style option not set or the style is not found, the lang value is used to find a style, if no style exists, the default style is used</li>
 </ul>
-To define the (language) styles, take a look into the plugin settings, exspecially the "codestyle" subsection. In this subsection each code style is defined. Each value is a CSS definition,
-so you can use any CSS element to configurate the source code parts.
-</p>
+To define the (language) styles, take a look into the plugin settings, exspecially the "codestyle" subsection. In this subsection each code style is defined. Each value is a CSS definition, so you can use
+any CSS element to configurate the source code parts.
+</li>
+</ul>
 
 
 
@@ -162,21 +181,8 @@ so you can use any CSS element to configurate the source code parts.
 == Frequently Asked Questions ==
 
 = Where can I find the tag options ? =
-Take a look on the administration page of the plugin. Within the brackets [] you can find the option name, that can be passed to the tag. There
-are also some options, which are set in the tag only:
-<ul>
-<li>highlight             : is used for static highlighting some code lines. Each line number (started with 1) is spitted by space [allowed values: spaces and numbers]</li>
-<li>hoverhighlight        : this option can be set more than once and adds a dynamic hover effect to a DOM element for hovering different code lines [allowed valus: class / ID of the DOM element, line numbers split by spaces, CSS style definition]</li>
-<li>keywordcase           : sets all keywords to lower or upper case. An empty value leaves the code untouched [allowed values: upper | lower | ""]</li>
-<li>id                    : set the unique ID of the code block [allowed values: every string, default value: geshisourcecolorer-MD5 hash of the source] </li>
-<li>style                 : sets the style of the code. If this option is not set, the plugin tries to find a style which is named with the language name (lower-case). If the style is not found, it uses the default style</li>
-<li>tab                   : sets the information, which code blocks should be collected in one container. The option value of this field is a class name and a name, which is shown in the item [allowed value: string value in this structure "classname tabtext"]</li>
-<li>lol                   : name of the source code that is shown within the list of listing (if this flag isn't set or empty, the code is not shown on the list) [allowed values: string value]</li>
-<li>lolhead               : shows the name, which is set by the list of listing option [allowed values: true | false]</li>
-<li>toolbar_blankwindow   : this option enables / disables the button for creating a text window with the source code [allowed values: true | false] </li>
-<li>toolbar_copyclipboard : this option enables / disables the copt-to-clipboard button [allowed values: true | false]</li>
-<li>toolbar_linenumber    : this option enables / disables the button for hiding / showing the line numbers [allowed values: true | false]</li>
-</ul>
+Take a look on the administration page of the plugin. Within the brackets [] you can find the option name, that can be passed to the tag.
+
 
 = Can I change the layout of the code box ? =
 Yes, take a look on "Other Notes", there is a short description fpr changing the layout.
@@ -192,7 +198,8 @@ Yes. Each line within a code block can be addressed with the ID name of the code
 
 = Can I add a table of listings ? =
 Yes, you can create a "list of listings" with the call <pre>[lol]</pre>. This will add a div to your page and a jQuery call fills the source data into the
-the div after the page have been loaded. The layout of this list is stored in the main CSS file. Feel free to change your layout.
+the div after the page have been loaded. The layout of this list is stored in the main CSS file. Feel free to change your layout. Take in mind, that you can not
+use the "collaps" call not on a "tab" view.
 
 
 = Can I collecte different code blocks into one container ? =
