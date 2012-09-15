@@ -56,7 +56,8 @@ themes. Own styles for different codes can be created and exported / imported in
 2. source code with collapsed view and dynamic highlight effect
 3. shows the black style
 4. tab view of code blocks 
-5. setting page with style definition
+5. tab view of code blocks with black style
+6. setting page with style definition
 
 
 == Shortcode ==

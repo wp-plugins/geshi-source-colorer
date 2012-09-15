@@ -106,7 +106,6 @@
 /** define the main style of the code list (use the margin & padding for set the number position) **/
 .geshisourcecolorer ol
 {
-    
     list-style-position: outside;
     margin: 0;
     padding: 0;
@@ -217,11 +216,11 @@
 }
 
 .geshisourcecolorer-tab-default .tabmenu {
-    background:-moz-linear-gradient(top, #efefef, #cfcfcf); 
-    background:-webkit-linear-gradient(top, #efefef, #cfcfcf);
-    background:-o-linear-gradient(top, #efefef, #cfcfcf); 
-    background:-ms-linear-gradient(top, #efefef, #cfcfcf);
-    background:linear-gradient(top, #efefef, #cfcfcf);
+    background: -moz-linear-gradient(top, #efefef, #cfcfcf); 
+    background: -webkit-linear-gradient(top, #efefef, #cfcfcf);
+    background: -o-linear-gradient(top, #efefef, #cfcfcf); 
+    background: -ms-linear-gradient(top, #efefef, #cfcfcf);
+    background: linear-gradient(top, #efefef, #cfcfcf);
     padding: 0.25em;
 }
 
@@ -254,7 +253,7 @@
 
 .geshisourcecolorer-block-black .toolbar
 {
-    background-color: #eeeeee;
+    background-color: #7d7e7d;
     border-width: 1px;
     border-color: #333333;
     border-style: solid;
@@ -274,4 +273,34 @@
 .geshisourcecolorer-block-black .toolbar div:hover {
     background-color: #aaaaaa;
 }
+
+.geshisourcecolorer-tab-default
+{
+    border-width: 2px;
+    border-color: #ababab;
+    border-style: solid;
+    border-radius: 5px;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.geshisourcecolorer-tab-black .tabmenu {
+    background: -moz-linear-gradient(top, #7d7e7d, #1e1e1e); 
+    background: -webkit-linear-gradient(top, #7d7e7d, #1e1e1e);
+    background: -o-linear-gradient(top, #7d7e7d, #1e1e1e); 
+    background: -ms-linear-gradient(top, #7d7e7d, #1e1e1e);
+    background: linear-gradient(top, #7d7e7d, #1e1e1e);
+    padding: 0.25em;
+}
+
+.geshisourcecolorer-tab-black .tabmenu ul
+{
+    padding: 0.25em;
+}
+
+.geshisourcecolorer-tab-black .tabmenu .current
+{
+    text-decoration:underline;
+}
+
 /* ======================================================================================================== */
