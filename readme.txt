@@ -90,13 +90,9 @@ The other options can be found in the plugin settings between the brackets [].
 </p>
 
 
-
-
-
 == Creating own code layout ==
 
-This section should be a short how-to for creating your own layout style. 
-<p>First take a look on the "layout.css" in the plugin directory. There are different sections:
+This section should be a short how-to for creating your own layout style. First take a look on the "layout.css" in the plugin directory. There are different sections:
 <ul><li>Each section descrips the layout of the different layout elements of the codes</li>
 
 <li>The other section descrips the "global" configurations of each element:
