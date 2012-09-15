@@ -418,51 +418,49 @@ class render {
         
         // create a list box with names and a hidden field with all styles as a JSON object
         echo "<input name=\"fpx_geshisourcecolorer_option[styles]\" id=\"jsonstyle\" type=\"hidden\" value='".json_encode($options["style"], JSON_FORCE_OBJECT)."' />";
-        echo "<div class=\"geshisourcecolorer-table\">";
+        echo "<table class=\"styletable\">";
         
-        echo "<div class=\"geshisourcecolorer-tr\">";
-        echo "<div class=\"geshisourcecolorer-td\"><select id=\"geshisourcecolorer-styleselect\" size=\"1\"></select></div>";
-        echo "<div class=\"geshisourcecolorer-td\">";
-        echo "<input id=\"geshisourcecolorer-stylesave\" type=\"button\" value=\"".__("store style", "fpx_geshisourcecolorer")."\" />";
-        echo "<input id=\"geshisourcecolorer-styledelete\" type=\"button\" value=\"".__("delete style", "fpx_geshisourcecolorer")."\" /></div>";
-        echo "<input id=\"geshisourcecolorer-stylepreview\" type=\"button\" value=\"".__("preview style", "fpx_geshisourcecolorer")."\" /></div>";
-        echo "</div>";
+        echo "<tr>";
+        echo "<td><select id=\"geshisourcecolorer-styleselect\" size=\"1\"></select></td>";
+        echo "<td><input id=\"geshisourcecolorer-stylesave\" type=\"button\" value=\"".__("store style", "fpx_geshisourcecolorer")."\" /></td>";
+        echo "<td><input id=\"geshisourcecolorer-styledelete\" type=\"button\" value=\"".__("delete style", "fpx_geshisourcecolorer")."\" /></td>";
+        echo "<td><input id=\"geshisourcecolorer-stylepreview\" type=\"button\" value=\"".__("preview style", "fpx_geshisourcecolorer")."\" /></td>";
+        echo "</tr>";
          
+        echo "<tr>";
+        echo "<td colspan=\"2\">".__("keyword style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-keywords\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td>".__("comment style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-comments\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td>".__("escapecharacter style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-escapechars\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "</tr>";
         
-        echo "<div class=\"geshisourcecolorer-tr\">";
-        echo "<div class=\"geshisourcecolorer-td\">".__("keyword style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-keywords\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></div>";
-        echo "<div class=\"geshisourcecolorer-td\">".__("comment style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-comments\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></div>";
-        echo "<div class=\"geshisourcecolorer-td\">".__("escapecharacter style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-escapechars\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></div>";
-        echo "</div>";
+        echo "<tr>";
+        echo "<td colspan=\"2\">".__("symbol style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-symbols\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td>".__("number style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-numbers\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td>".__("string style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-strings\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "</tr>";
         
-        echo "<div class=\"geshisourcecolorer-tr\">";
-        echo "<div class=\"geshisourcecolorer-td\">".__("symbol style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-symbols\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></div>";
-        echo "<div class=\"geshisourcecolorer-td\">".__("number style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-numbers\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></div>";
-        echo "<div class=\"geshisourcecolorer-td\">".__("string style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-strings\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></div>";
-        echo "</div>";
+        echo "<tr>";
+        echo "<td colspan=\"2\">".__("method style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-methods\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td>".__("regular expression style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-regex\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td>".__("highlight style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-highlight\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "</tr>";
         
-        echo "<div class=\"geshisourcecolorer-tr\">";
-        echo "<div class=\"geshisourcecolorer-td\">".__("method style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-methods\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></div>";
-        echo "<div class=\"geshisourcecolorer-td\">".__("regular expression style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-regex\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></div>";
-        echo "<div class=\"geshisourcecolorer-td\">".__("highlight style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-highlight\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></div>";
-        echo "</div>";
+        echo "<tr>";
+        echo "<td colspan=\"2\">".__("keyword hover style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-keywordhover\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td>".__("keyword link style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-keywordlink\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td>".__("keyword active style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-keywordactive\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "</tr>";
         
-        echo "<div class=\"geshisourcecolorer-tr\">";
-        echo "<div class=\"geshisourcecolorer-td\">".__("keyword hover style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-keywordhover\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></div>";
-        echo "<div class=\"geshisourcecolorer-td\">".__("keyword link style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-keywordlink\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></div>";
-        echo "<div class=\"geshisourcecolorer-td\">".__("keyword active style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-keywordactive\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></div>";
-        echo "</div>";
-        
-        echo "<div class=\"geshisourcecolorer-tr\">";
-        echo "<div class=\"geshisourcecolorer-td\">".__("keyword visited style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-keywordvisited\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></div>";
-        echo "<div class=\"geshisourcecolorer-td\">".__("preview test code", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-previewcode\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></div>";
-        echo "<div class=\"geshisourcecolorer-td\">".__("preview language", "fpx_geshisourcecolorer")."<select id=\"geshisourcecolorer-previewlanguage\" size=\"1\">";
+        echo "<tr>";
+        echo "<td colspan=\"2\">".__("keyword visited style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-keywordvisited\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td>".__("preview test code", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-previewcode\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td>".__("preview language", "fpx_geshisourcecolorer")."<select id=\"geshisourcecolorer-previewlanguage\" size=\"1\">";
         foreach( $lang as $key => $val )
             echo "<option value=\"".$key."\">".$val."</option>";
-        echo "</select></div>";
-        echo "</div>";
-        echo "</div>";
-        
+        echo "</select></td>";
+        echo "</tr>";
+
+        echo "</table>";
         #preview div
         echo "<div id=\"geshisourcecolorer-preview\"></div>";
     }

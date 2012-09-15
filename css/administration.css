@@ -20,24 +20,8 @@
 **/
 
 
-/** settings page table **/
-.geshisourcecolorer-table {
-    display: inline;
-}
-
-/** settings page table row **/
-.geshisourcecolorer-tr {
-    display: table-row;
-}f
-
-/** settings page table data **/
-.geshisourcecolorer-td {
-    display: table-cell;
-    padding: 1em;
-}
-
 /** settings page textarea **/
-.geshisourcecolorer-td textarea, .geshisourcecolorer-td input {
+textarea, input {
     vertical-align: middle;
     margin: 1em;
 }
@@ -47,5 +31,5 @@
     border-width: 1px;
     border-color: #ababab;
     border-style: solid;
-    width: 75%;
+    width: 85%;
 }

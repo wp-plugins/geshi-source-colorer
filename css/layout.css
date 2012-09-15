@@ -106,6 +106,7 @@
 /** define the main style of the code list (use the margin & padding for set the number position) **/
 .geshisourcecolorer ol
 {
+    
     list-style-position: outside;
     margin: 0;
     padding: 0;
@@ -116,7 +117,7 @@
 {
     line-height: 1.25em;
     margin-left: 3em;
-}    
+ }    
 /* ======================================================================================================== */
 
 
