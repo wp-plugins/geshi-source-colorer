@@ -198,7 +198,7 @@ used, so you can create your own styles.
 = Can I change the layout of the container ? =
 Yes, the plugin has got two styles:
 <ul>
-<li>"geshisourcecolorer-block" it is a style with white background and greyed line numbers</li>
+<li>"geshisourcecolorer-block-default" it is a style with white background and greyed line numbers</li>
 <li>"geshisourcecolorer-block-black" a black style like Emacs, with black background and white line numbers</li>
 </ul>
 Set up one of these styles on the plugin setting page in the main menu under "css class name of the code blocks container" (also the line style). 
@@ -219,8 +219,7 @@ have created a style and you think other people can use them also, send me the s
 
 = Which HTML element is used by the code box ? = 
 GeSHi uses in this plugin an ordered list (ol) and for each code line (li) different span tags. The full code is in a div tag, that uses the classes "geshisourcecolorer"
-(especially "geshisourcecolorer-line" / "geshisourcecolorer-block") and a class named the language name. The toolbar is also stored in a div under the main code div. For
-the full code, take a look into the DOM structure.
+(especially "geshisourcecolorer-line") and a class named the language name. The toolbar is also stored in a div under the main code div. For the full code, take a look into the DOM structure.
 
 
 = Is the copy-to-clipboard function JavaScript only ? =
