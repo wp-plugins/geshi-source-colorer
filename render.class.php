@@ -39,52 +39,52 @@ class render {
         register_setting("fpx_geshisourcecolorer_option", "fpx_geshisourcecolorer_option", get_class()."::validate");
         
         
-        add_settings_section("fpx_geshisourcecolorer_option",  __("code tags", "fpx_geshisourcecolorer"),   get_class()."::render_tagsection",              "fpx_geshisourcecolorer_optionglobal");
-        add_settings_field("codetag",            __("code tag", "fpx_geshisourcecolorer"),      get_class()."::render_codetag",              "fpx_geshisourcecolorer_optionglobal",      "fpx_geshisourcecolorer_option");
-        add_settings_field("codelinetag",        __("code line tag", "fpx_geshisourcecolorer"), get_class()."::render_codelinetag",          "fpx_geshisourcecolorer_optionglobal",      "fpx_geshisourcecolorer_option");
-        add_settings_field("languagetag",        __("language tag", "fpx_geshisourcecolorer"),  get_class()."::render_languagetag",          "fpx_geshisourcecolorer_optionglobal",      "fpx_geshisourcecolorer_option");
+        add_settings_section("fpx_geshisourcecolorer_option",  __("code tags", "geshi-source-colorer"),   get_class()."::render_tagsection",              "fpx_geshisourcecolorer_optionglobal");
+        add_settings_field("codetag",            __("code tag", "geshi-source-colorer"),      get_class()."::render_codetag",              "fpx_geshisourcecolorer_optionglobal",      "fpx_geshisourcecolorer_option");
+        add_settings_field("codelinetag",        __("code line tag", "geshi-source-colorer"), get_class()."::render_codelinetag",          "fpx_geshisourcecolorer_optionglobal",      "fpx_geshisourcecolorer_option");
+        add_settings_field("languagetag",        __("language tag", "geshi-source-colorer"),  get_class()."::render_languagetag",          "fpx_geshisourcecolorer_optionglobal",      "fpx_geshisourcecolorer_option");
         
         
-        add_settings_section("fpx_geshisourcecolorer_option",  __("main options", "fpx_geshisourcecolorer"),                               get_class()."::render_mainsection",   "fpx_geshisourcecolorer_optionmain");
-        add_settings_field("maincss",           __("enable / disable plugin css", "fpx_geshisourcecolorer"),                                   get_class()."::render_maincss",           "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");
-        add_settings_field("geshicss",          __("enable / disable GeSHi css", "fpx_geshisourcecolorer")." <em>[geshicss]</em>",             get_class()."::render_geshicss",          "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");
-        add_settings_field("visualeditor",      __("enable / disable HTML decode (on visual editor use)", "fpx_geshisourcecolorer")." <em>[visualeditor]</em>",       get_class()."::render_visualeditor",      "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");
-        add_settings_field("keywordref",        __("enable / disable keyword references", "fpx_geshisourcecolorer")." <em>[keywordref]</em>",  get_class()."::render_keywordref",        "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");
-        add_settings_field("linenumber",        __("enable / disable line numbers", "fpx_geshisourcecolorer")." <em>[linenumber]</em>",        get_class()."::render_linenumber",        "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option"); 
-        add_settings_field("collapse",          __("enable / disable collapse code blocks", "fpx_geshisourcecolorer")." <em>[collapse]</em>",  get_class()."::render_collapse",          "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");              
-        add_settings_field("collapsetext",      __("collapse text", "fpx_geshisourcecolorer")." <em>[collapsetext]</em>",                      get_class()."::render_collapsetext",          "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");         
-        add_settings_field("tabsize",           __("tabulator size", "fpx_geshisourcecolorer")." <em>[tabsize]</em>",                          get_class()."::render_tabsize",           "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");
-        add_settings_field("copyclipboardtext", __("copy-clipboard message text", "fpx_geshisourcecolorer")." <em>[copytext]</em>",            get_class()."::render_clipboardcopytext", "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");
-        add_settings_field("lolheadtext",       __("header text of the list of listings", "fpx_geshisourcecolorer"),                           get_class()."::render_lolheadtext",       "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
-        add_settings_field("blockcss",          __("css class name of the code blocks container", "fpx_geshisourcecolorer")." <em>[css_block]</em>",     get_class()."::render_codeblockcss",      "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
-        add_settings_field("linecss",           __("css class name of the code lines container", "fpx_geshisourcecolorer")." <em>[css_line]</em>",       get_class()."::render_codelinecss",       "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
-        add_settings_field("tabcss",            __("css class name of the tab container", "fpx_geshisourcecolorer")." <em>[css_tab]</em>",       get_class()."::render_tabcss",       "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
+        add_settings_section("fpx_geshisourcecolorer_option",  __("main options", "geshi-source-colorer"),                               get_class()."::render_mainsection",   "fpx_geshisourcecolorer_optionmain");
+        add_settings_field("maincss",           __("enable / disable plugin css", "geshi-source-colorer"),                                   get_class()."::render_maincss",           "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");
+        add_settings_field("geshicss",          __("enable / disable GeSHi css", "geshi-source-colorer")." <em>[geshicss]</em>",             get_class()."::render_geshicss",          "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");
+        add_settings_field("visualeditor",      __("enable / disable HTML decode (on visual editor use)", "geshi-source-colorer")." <em>[visualeditor]</em>",       get_class()."::render_visualeditor",      "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");
+        add_settings_field("keywordref",        __("enable / disable keyword references", "geshi-source-colorer")." <em>[keywordref]</em>",  get_class()."::render_keywordref",        "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");
+        add_settings_field("linenumber",        __("enable / disable line numbers", "geshi-source-colorer")." <em>[linenumber]</em>",        get_class()."::render_linenumber",        "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option"); 
+        add_settings_field("collapse",          __("enable / disable collapse code blocks", "geshi-source-colorer")." <em>[collapse]</em>",  get_class()."::render_collapse",          "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");              
+        add_settings_field("collapsetext",      __("collapse text", "geshi-source-colorer")." <em>[collapsetext]</em>",                      get_class()."::render_collapsetext",          "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");         
+        add_settings_field("tabsize",           __("tabulator size", "geshi-source-colorer")." <em>[tabsize]</em>",                          get_class()."::render_tabsize",           "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");
+        add_settings_field("copyclipboardtext", __("copy-clipboard message text", "geshi-source-colorer")." <em>[copytext]</em>",            get_class()."::render_clipboardcopytext", "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");
+        add_settings_field("lolheadtext",       __("header text of the list of listings", "geshi-source-colorer"),                           get_class()."::render_lolheadtext",       "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
+        add_settings_field("blockcss",          __("css class name of the code blocks container", "geshi-source-colorer")." <em>[css_block]</em>",     get_class()."::render_codeblockcss",      "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
+        add_settings_field("linecss",           __("css class name of the code lines container", "geshi-source-colorer")." <em>[css_line]</em>",       get_class()."::render_codelinecss",       "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
+        add_settings_field("tabcss",            __("css class name of the tab container", "geshi-source-colorer")." <em>[css_tab]</em>",       get_class()."::render_tabcss",       "fpx_geshisourcecolorer_optionmain",      "fpx_geshisourcecolorer_option");  
   
         
-        add_settings_section("fpx_geshisourcecolorer_option",  __("code block toolbar", "fpx_geshisourcecolorer"),       get_class()."::render_codeblocktoolbarsection",          "fpx_geshisourcecolorer_optioncodeblocktoolbar");
-        add_settings_field("toolbar_linenumber",   __("enable / disable button for toggeling line numbers", "fpx_geshisourcecolorer")." <em>[toolbar_linenumber]</em>",     get_class()."::render_blocktoolbarlinenumber",          "fpx_geshisourcecolorer_optioncodeblocktoolbar", "fpx_geshisourcecolorer_option");        
-        add_settings_field("toolbar_clipboard",    __("enable / disable button for copy-to-clipboard", "fpx_geshisourcecolorer")." <em>[toolbar_copyclipboard]</em>",       get_class()."::render_blocktoolbarclipboard",          "fpx_geshisourcecolorer_optioncodeblocktoolbar", "fpx_geshisourcecolorer_option"); 
-        add_settings_field("toolbar_sourcewindow",    __("enable / disable button for open blank code window", "fpx_geshisourcecolorer")." <em>[toolbar_blankwindow]</em>", get_class()."::render_blocktoolbarblankwindow",          "fpx_geshisourcecolorer_optioncodeblocktoolbar", "fpx_geshisourcecolorer_option"); 
+        add_settings_section("fpx_geshisourcecolorer_option",  __("code block toolbar", "geshi-source-colorer"),       get_class()."::render_codeblocktoolbarsection",          "fpx_geshisourcecolorer_optioncodeblocktoolbar");
+        add_settings_field("toolbar_linenumber",   __("enable / disable button for toggeling line numbers", "geshi-source-colorer")." <em>[toolbar_linenumber]</em>",     get_class()."::render_blocktoolbarlinenumber",          "fpx_geshisourcecolorer_optioncodeblocktoolbar", "fpx_geshisourcecolorer_option");        
+        add_settings_field("toolbar_clipboard",    __("enable / disable button for copy-to-clipboard", "geshi-source-colorer")." <em>[toolbar_copyclipboard]</em>",       get_class()."::render_blocktoolbarclipboard",          "fpx_geshisourcecolorer_optioncodeblocktoolbar", "fpx_geshisourcecolorer_option"); 
+        add_settings_field("toolbar_sourcewindow",    __("enable / disable button for open blank code window", "geshi-source-colorer")." <em>[toolbar_blankwindow]</em>", get_class()."::render_blocktoolbarblankwindow",          "fpx_geshisourcecolorer_optioncodeblocktoolbar", "fpx_geshisourcecolorer_option"); 
         
         
-        add_settings_section("fpx_geshisourcecolorer_option",  __("code line toolbar", "fpx_geshisourcecolorer"),       get_class()."::render_codelinetoolbarsection",          "fpx_geshisourcecolorer_optioncodelinetoolbar");   
-        add_settings_field("toolbar_clipboard",    __("enable / disable button for copy-to-clipboard", "fpx_geshisourcecolorer")." <em>[toolbar_copyclipboard]</em>",       get_class()."::render_linetoolbarclipboard",          "fpx_geshisourcecolorer_optioncodelinetoolbar", "fpx_geshisourcecolorer_option"); 
-        add_settings_field("toolbar_sourcewindow",    __("enable / disable button for open blank code window", "fpx_geshisourcecolorer")." <em>[toolbar_blankwindow]</em>", get_class()."::render_linetoolbarblankwindow",          "fpx_geshisourcecolorer_optioncodelinetoolbar", "fpx_geshisourcecolorer_option"); 
+        add_settings_section("fpx_geshisourcecolorer_option",  __("code line toolbar", "geshi-source-colorer"),       get_class()."::render_codelinetoolbarsection",          "fpx_geshisourcecolorer_optioncodelinetoolbar");   
+        add_settings_field("toolbar_clipboard",    __("enable / disable button for copy-to-clipboard", "geshi-source-colorer")." <em>[toolbar_copyclipboard]</em>",       get_class()."::render_linetoolbarclipboard",          "fpx_geshisourcecolorer_optioncodelinetoolbar", "fpx_geshisourcecolorer_option"); 
+        add_settings_field("toolbar_sourcewindow",    __("enable / disable button for open blank code window", "geshi-source-colorer")." <em>[toolbar_blankwindow]</em>", get_class()."::render_linetoolbarblankwindow",          "fpx_geshisourcecolorer_optioncodelinetoolbar", "fpx_geshisourcecolorer_option"); 
         
         
         
-        add_settings_section("fpx_geshisourcecolorer_option",  __("code styles", "fpx_geshisourcecolorer"),       get_class()."::render_stylesection",          "fpx_geshisourcecolorer_optionstyles");
-        add_settings_field("styles",    __("styles", "fpx_geshisourcecolorer")." <em>[style]</em>",       get_class()."::render_styles",          "fpx_geshisourcecolorer_optionstyles", "fpx_geshisourcecolorer_option"); 
+        add_settings_section("fpx_geshisourcecolorer_option",  __("code styles", "geshi-source-colorer"),       get_class()."::render_stylesection",          "fpx_geshisourcecolorer_optionstyles");
+        add_settings_field("styles",    __("styles", "geshi-source-colorer")." <em>[style]</em>",       get_class()."::render_styles",          "fpx_geshisourcecolorer_optionstyles", "fpx_geshisourcecolorer_option"); 
 
         
         
         
-        add_settings_section("fpx_geshisourcecolorer_option",  __("export / import", "fpx_geshisourcecolorer"),   get_class()."::render_eximportsection",       "fpx_geshisourcecolorer_optionexportimport");
-        add_settings_field("export",  __("export value", "fpx_geshisourcecolorer"),                get_class()."::render_export",                "fpx_geshisourcecolorer_optionexportimport", "fpx_geshisourcecolorer_option");
-        add_settings_field("import",  __("import value", "fpx_geshisourcecolorer"),                get_class()."::render_import",                "fpx_geshisourcecolorer_optionexportimport", "fpx_geshisourcecolorer_option");
-        add_settings_field("importtags",    __("import code tags", "fpx_geshisourcecolorer"),      get_class()."::render_importcodetags",        "fpx_geshisourcecolorer_optionexportimport", "fpx_geshisourcecolorer_option");
-        add_settings_field("importmain",    __("import main options", "fpx_geshisourcecolorer"),   get_class()."::render_importmain",            "fpx_geshisourcecolorer_optionexportimport", "fpx_geshisourcecolorer_option");
-        add_settings_field("importstyles",  __("import code styles", "fpx_geshisourcecolorer"),    get_class()."::render_importstyles",           "fpx_geshisourcecolorer_optionexportimport", "fpx_geshisourcecolorer_option");
+        add_settings_section("fpx_geshisourcecolorer_option",  __("export / import", "geshi-source-colorer"),   get_class()."::render_eximportsection",       "fpx_geshisourcecolorer_optionexportimport");
+        add_settings_field("export",  __("export value", "geshi-source-colorer"),                get_class()."::render_export",                "fpx_geshisourcecolorer_optionexportimport", "fpx_geshisourcecolorer_option");
+        add_settings_field("import",  __("import value", "geshi-source-colorer"),                get_class()."::render_import",                "fpx_geshisourcecolorer_optionexportimport", "fpx_geshisourcecolorer_option");
+        add_settings_field("importtags",    __("import code tags", "geshi-source-colorer"),      get_class()."::render_importcodetags",        "fpx_geshisourcecolorer_optionexportimport", "fpx_geshisourcecolorer_option");
+        add_settings_field("importmain",    __("import main options", "geshi-source-colorer"),   get_class()."::render_importmain",            "fpx_geshisourcecolorer_optionexportimport", "fpx_geshisourcecolorer_option");
+        add_settings_field("importstyles",  __("import code styles", "geshi-source-colorer"),    get_class()."::render_importstyles",           "fpx_geshisourcecolorer_optionexportimport", "fpx_geshisourcecolorer_option");
     }
 
     
@@ -96,24 +96,24 @@ class render {
     {
         // check the input
         if ( (!isset($pa["tag_code"])) || (empty($pa["tag_code"])) || (preg_match("/\s+/", $pa["tag_code"])) )
-            add_settings_error( "geshisourcecolorer", "option_validate_codetag", __("code tag need not to be empty or have any spaces", "fpx_geshisourcecolorer"), "error");
+            add_settings_error( "geshisourcecolorer", "option_validate_codetag", __("code tag need not to be empty or have any spaces", "geshi-source-colorer"), "error");
         if ( (!isset($pa["tag_line"])) || (empty($pa["tag_line"])) || (preg_match("/\s+/", $pa["tag_line"])) )
-            add_settings_error( "geshisourcecolorer", "option_validate_codelinetag", __("code line tag need not to be empty or have any spaces", "fpx_geshisourcecolorer"), "error");
+            add_settings_error( "geshisourcecolorer", "option_validate_codelinetag", __("code line tag need not to be empty or have any spaces", "geshi-source-colorer"), "error");
         if ( (!isset($pa["tag_language"])) ||(empty($pa["tag_language"])) || (preg_match("/\s+/", $pa["tag_language"])) )
-            add_settings_error( "geshisourcecolorer", "option_validate_languagetag", __("language tag need not to be empty or have any spaces", "fpx_geshisourcecolorer"), "error");
+            add_settings_error( "geshisourcecolorer", "option_validate_languagetag", __("language tag need not to be empty or have any spaces", "geshi-source-colorer"), "error");
         
         if ( (!isset($pa["tabsize"])) || (empty($pa["tabsize"])) || (!is_numeric($pa["tabsize"])) || ($pa["tabsize"] < 0))
-            add_settings_error( "geshisourcecolorer", "option_validate_tabsize", __("tabs size need not to be empty, must be numeric and must be equal and greater than zero", "fpx_geshisourcecolorer"), "error");
+            add_settings_error( "geshisourcecolorer", "option_validate_tabsize", __("tabs size need not to be empty, must be numeric and must be equal and greater than zero", "geshi-source-colorer"), "error");
         if ( (!isset($pa["copytext"])) || (empty($pa["copytext"])) )
-            add_settings_error( "geshisourcecolorer", "option_validate_copytext", __("copy-clipboard message text need not to be empty", "fpx_geshisourcecolorer"), "error");
+            add_settings_error( "geshisourcecolorer", "option_validate_copytext", __("copy-clipboard message text need not to be empty", "geshi-source-colorer"), "error");
         if ( (!isset($pa["lolheadtext"])) || (empty($pa["lolheadtext"])) )
-            add_settings_error( "geshisourcecolorer", "option_validate_lolheadtext", __("list-of-listings header text need not to be empty", "fpx_geshisourcecolorer"), "error");
+            add_settings_error( "geshisourcecolorer", "option_validate_lolheadtext", __("list-of-listings header text need not to be empty", "geshi-source-colorer"), "error");
         if ( (!isset($pa["css_line"])) || (empty($pa["css_line"])) )
-            add_settings_error( "geshisourcecolorer", "option_validate_cssline", __("css class name of the code line need not to be empty", "fpx_geshisourcecolorer"), "error");
+            add_settings_error( "geshisourcecolorer", "option_validate_cssline", __("css class name of the code line need not to be empty", "geshi-source-colorer"), "error");
         if ( (!isset($pa["css_line"])) || (empty($pa["css_block"])) )
-            add_settings_error( "geshisourcecolorer", "option_validate_cssline", __("css class name of the code block need not to be empty", "fpx_geshisourcecolorer"), "error");
+            add_settings_error( "geshisourcecolorer", "option_validate_cssline", __("css class name of the code block need not to be empty", "geshi-source-colorer"), "error");
         if ( (!isset($pa["css_tab"])) || (empty($pa["css_tab"])) )
-            add_settings_error( "geshisourcecolorer", "option_validate_csstab", __("css class name of the tab container need not to be empty", "fpx_geshisourcecolorer"), "error");
+            add_settings_error( "geshisourcecolorer", "option_validate_csstab", __("css class name of the tab container need not to be empty", "geshi-source-colorer"), "error");
         
         
         // set the option values into the result array (return the default options, if an error occures)
@@ -183,7 +183,7 @@ class render {
         $data = @unserialize(trim($pa["import"]));
         if ( (empty($data)) || (!is_array($data)) )
         {
-            add_settings_error( "geshisourcecolorer", "option_validate_import", __("import data is incorrect", "fpx_geshisourcecolorer"), "error");
+            add_settings_error( "geshisourcecolorer", "option_validate_import", __("import data is incorrect", "geshi-source-colorer"), "error");
             return $options;
         }
         
@@ -191,7 +191,7 @@ class render {
         $importversion = floatval( isset($data["pluginversion"]) ? $data["pluginversion"] : 0 );
         if (round($importversion,2) < round(self::getPluginVersion(),2))
         {
-            add_settings_error( "geshisourcecolorer", "option_validate_importversion", __("import data version is bigger than current version", "fpx_geshisourcecolorer"), "error");
+            add_settings_error( "geshisourcecolorer", "option_validate_importversion", __("import data version is bigger than current version", "geshi-source-colorer"), "error");
             return $options;
         }
         
@@ -201,13 +201,13 @@ class render {
         $pa["importstyles"]     = isset($pa["importstyles"])      ? $pa["importstyles"] : null;
         if ( (!$pa["importcodetags"]) && (!$pa["importmainoption"]) && (empty($pa["importstyles"])) ) 
         {
-            add_settings_error( "geshisourcecolorer", "option_validate_importoptions", __("no options for the import are selected, so there is nothing to do", "fpx_geshisourcecolorer"), "error");
+            add_settings_error( "geshisourcecolorer", "option_validate_importoptions", __("no options for the import are selected, so there is nothing to do", "geshi-source-colorer"), "error");
             return $options;
         }      
         
         $importopt = import::run( $options, $data, $pa, $importversion, self::getPluginVersion() );
         if (empty($importopt))
-            add_settings_error( "geshisourcecolorer", "option_validate_importversion", __("no data is imported, because the import version matches no import function", "fpx_geshisourcecolorer"), "error");
+            add_settings_error( "geshisourcecolorer", "option_validate_importversion", __("no data is imported, because the import version matches no import function", "geshi-source-colorer"), "error");
         else
             $options = $importopt;
         
@@ -217,8 +217,8 @@ class render {
     /** render the option page **/
     static function renderMain()
     {
-        echo "<div class=\"wrap\"><h2>GeSHi Source Colorer ".__("Configuration", "fpx_geshisourcecolorer")."</h2>\n";
-        echo "<p>".sprintf(__("The options here define the global states of the plugin, all option, on which brackets [] are added, can be set to the tag call. Each source code can be configurated individual with the options. The plugin options can be exported and imported from another version. The values will be converted to the plugin, so you can use this option to copy your styles or backup the data on plugin updates. Options can be shown / hide by a click on the header. The installed GeSHi version is %s and the supported languages can be found on <a href=\"http://qbnz.com/highlighter/\">GeSHi's project page</a>", "fpx_geshisourcecolorer"), GESHI_VERSION)."</p>";
+        echo "<div class=\"wrap\"><h2>GeSHi Source Colorer ".__("Configuration", "geshi-source-colorer")."</h2>\n";
+        echo "<p>".sprintf(__("The options here define the global states of the plugin, all option, on which brackets [] are added, can be set to the tag call. Each source code can be configurated individual with the options. The plugin options can be exported and imported from another version. The values will be converted to the plugin, so you can use this option to copy your styles or backup the data on plugin updates. Options can be shown / hide by a click on the header. The installed GeSHi version is %s and the supported languages can be found on <a href=\"http://qbnz.com/highlighter/\">GeSHi's project page</a>", "geshi-source-colorer"), GESHI_VERSION)."</p>";
         echo "<form method=\"post\" action=\"options.php\">";
         settings_fields("fpx_geshisourcecolorer_option");
         
@@ -244,13 +244,13 @@ class render {
     
     
     static function render_tagsection() {
-        echo __("This main option sets tags, which can defined the code blocks. There are three tags, the first one defines code blocks, the second code lines and the third the parameter for setting the code language. You can change these tags to a fee defined non-empty value. There are some parameter which can be used for defining your own code tag. Use the following placeholders:", "fpx_geshisourcecolorer");
+        echo __("This main option sets tags, which can defined the code blocks. There are three tags, the first one defines code blocks, the second code lines and the third the parameter for setting the code language. You can change these tags to a fee defined non-empty value. There are some parameter which can be used for defining your own code tag. Use the following placeholders:", "geshi-source-colorer");
         echo "<ul>";
-        echo "<li><em>%c</em> ".__("defines the code position", "fpx_geshisourcecolorer")."</li>";
-        echo "<li><em>%s</em> ".__("defines any spaces (one or more spaces)", "fpx_geshisourcecolorer")."</li>";
-        echo "<li><em>%p</em> ".__("defines the parameter in a key-value pair (key=\"value\")", "fpx_geshisourcecolorer")."</li>";
+        echo "<li><em>%c</em> ".__("defines the code position", "geshi-source-colorer")."</li>";
+        echo "<li><em>%s</em> ".__("defines any spaces (one or more spaces)", "geshi-source-colorer")."</li>";
+        echo "<li><em>%p</em> ".__("defines the parameter in a key-value pair (key=\"value\")", "geshi-source-colorer")."</li>";
         echo "</ul>";
-        echo __("The third parameter (lang) is only used within the", "fpx_geshisourcecolorer")." <em>%p</em> ".__("placeholder", "fpx_geshisourcecolorer");
+        echo __("The third parameter (lang) is only used within the", "geshi-source-colorer")." <em>%p</em> ".__("placeholder", "geshi-source-colorer");
     }
     
     static function render_codetag()
@@ -275,7 +275,7 @@ class render {
     
     static function render_mainsection()
     {
-        echo __("This option section sets the default values for the code blocks. You can set each value also to the code tags and overload the default option.", "fpx_geshisourcecolorer");
+        echo __("This option section sets the default values for the code blocks. You can set each value also to the code tags and overload the default option.", "geshi-source-colorer");
     }
     
     static function render_visualeditor()
@@ -360,7 +360,7 @@ class render {
     
     static function render_codeblocktoolbarsection()
     {
-        echo __("This subsection sets the default values of the code block hover toolbar.", "fpx_geshisourcecolorer");
+        echo __("This subsection sets the default values of the code block hover toolbar.", "geshi-source-colorer");
     }
     
     static function render_blocktoolbarlinenumber()
@@ -385,7 +385,7 @@ class render {
     
     static function render_codelinetoolbarsection()
     {
-        echo __("This subsection sets the default values of the code line hover toolbar.", "fpx_geshisourcecolorer");
+        echo __("This subsection sets the default values of the code line hover toolbar.", "geshi-source-colorer");
     }
     
     static function render_linetoolbarclipboard()
@@ -404,7 +404,7 @@ class render {
     
     static function render_stylesection()
     {
-        echo __("Within this subsection you can define your code styles. Each style definition must have a name. The plugin indentify the style, which is setup to a code block, with the name in lower-case. The plugin tries to get the style, that is set with the name first. If no style is found, the plugin tries to get a style with the name of the code language, if also no style is found, the default style is used. The default style can not be deleted, but it can be modified. The styles are saved when the plugin settings are stored, so a click to \"store style\" or \"delete style\" updates / removes the style on the list only. Rename or copy of a style can be done with saving under a new name and erasure. You can use any CSS element of your style description. You can take a preview of your style, add some example code into the field and choose a language definition.", "fpx_geshisourcecolorer");
+        echo __("Within this subsection you can define your code styles. Each style definition must have a name. The plugin indentify the style, which is setup to a code block, with the name in lower-case. The plugin tries to get the style, that is set with the name first. If no style is found, the plugin tries to get a style with the name of the code language, if also no style is found, the default style is used. The default style can not be deleted, but it can be modified. The styles are saved when the plugin settings are stored, so a click to \"store style\" or \"delete style\" updates / removes the style on the list only. Rename or copy of a style can be done with saving under a new name and erasure. You can use any CSS element of your style description. You can take a preview of your style, add some example code into the field and choose a language definition.", "geshi-source-colorer");
         echo "<div id=\"geshisourcecolorer-examplecode\"></div>";
     }
     
@@ -422,39 +422,39 @@ class render {
         
         echo "<tr>";
         echo "<td><select id=\"geshisourcecolorer-styleselect\" size=\"1\"></select></td>";
-        echo "<td><input id=\"geshisourcecolorer-stylesave\" type=\"button\" value=\"".__("store style", "fpx_geshisourcecolorer")."\" /></td>";
-        echo "<td><input id=\"geshisourcecolorer-styledelete\" type=\"button\" value=\"".__("delete style", "fpx_geshisourcecolorer")."\" /></td>";
-        echo "<td><input id=\"geshisourcecolorer-stylepreview\" type=\"button\" value=\"".__("preview style", "fpx_geshisourcecolorer")."\" /></td>";
+        echo "<td><input id=\"geshisourcecolorer-stylesave\" type=\"button\" value=\"".__("store style", "geshi-source-colorer")."\" /></td>";
+        echo "<td><input id=\"geshisourcecolorer-styledelete\" type=\"button\" value=\"".__("delete style", "geshi-source-colorer")."\" /></td>";
+        echo "<td><input id=\"geshisourcecolorer-stylepreview\" type=\"button\" value=\"".__("preview style", "geshi-source-colorer")."\" /></td>";
         echo "</tr>";
          
         echo "<tr>";
-        echo "<td colspan=\"2\">".__("keyword style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-keywords\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
-        echo "<td>".__("comment style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-comments\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
-        echo "<td>".__("escapecharacter style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-escapechars\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td colspan=\"2\">".__("keyword style", "geshi-source-colorer")."<textarea id=\"geshisourcecolorer-keywords\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td>".__("comment style", "geshi-source-colorer")."<textarea id=\"geshisourcecolorer-comments\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td>".__("escapecharacter style", "geshi-source-colorer")."<textarea id=\"geshisourcecolorer-escapechars\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
         echo "</tr>";
         
         echo "<tr>";
-        echo "<td colspan=\"2\">".__("symbol style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-symbols\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
-        echo "<td>".__("number style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-numbers\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
-        echo "<td>".__("string style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-strings\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td colspan=\"2\">".__("symbol style", "geshi-source-colorer")."<textarea id=\"geshisourcecolorer-symbols\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td>".__("number style", "geshi-source-colorer")."<textarea id=\"geshisourcecolorer-numbers\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td>".__("string style", "geshi-source-colorer")."<textarea id=\"geshisourcecolorer-strings\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
         echo "</tr>";
         
         echo "<tr>";
-        echo "<td colspan=\"2\">".__("method style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-methods\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
-        echo "<td>".__("regular expression style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-regex\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
-        echo "<td>".__("highlight style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-highlight\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td colspan=\"2\">".__("method style", "geshi-source-colorer")."<textarea id=\"geshisourcecolorer-methods\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td>".__("regular expression style", "geshi-source-colorer")."<textarea id=\"geshisourcecolorer-regex\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td>".__("highlight style", "geshi-source-colorer")."<textarea id=\"geshisourcecolorer-highlight\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
         echo "</tr>";
         
         echo "<tr>";
-        echo "<td colspan=\"2\">".__("keyword hover style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-keywordhover\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
-        echo "<td>".__("keyword link style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-keywordlink\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
-        echo "<td>".__("keyword active style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-keywordactive\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td colspan=\"2\">".__("keyword hover style", "geshi-source-colorer")."<textarea id=\"geshisourcecolorer-keywordhover\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td>".__("keyword link style", "geshi-source-colorer")."<textarea id=\"geshisourcecolorer-keywordlink\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td>".__("keyword active style", "geshi-source-colorer")."<textarea id=\"geshisourcecolorer-keywordactive\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
         echo "</tr>";
         
         echo "<tr>";
-        echo "<td colspan=\"2\">".__("keyword visited style", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-keywordvisited\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
-        echo "<td>".__("preview test code", "fpx_geshisourcecolorer")."<textarea id=\"geshisourcecolorer-previewcode\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
-        echo "<td>".__("preview language", "fpx_geshisourcecolorer")."<select id=\"geshisourcecolorer-previewlanguage\" size=\"1\">";
+        echo "<td colspan=\"2\">".__("keyword visited style", "geshi-source-colorer")."<textarea id=\"geshisourcecolorer-keywordvisited\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td>".__("preview test code", "geshi-source-colorer")."<textarea id=\"geshisourcecolorer-previewcode\" wrap=\"soft\" rows=\"2\" cols=\"20\"></textarea></td>";
+        echo "<td>".__("preview language", "geshi-source-colorer")."<select id=\"geshisourcecolorer-previewlanguage\" size=\"1\">";
         foreach( $lang as $key => $val )
             echo "<option value=\"".$key."\">".$val."</option>";
         echo "</select></td>";
@@ -469,7 +469,7 @@ class render {
     
     static function render_eximportsection()
     {
-        echo __("This section shows all option values of the plugin as a text representation. You can copy this value into another instance of the plugin. If you past a value to the import section, all plugin values will be repaced with the values of the import.", "fpx_geshisourcecolorer");
+        echo __("This section shows all option values of the plugin as a text representation. You can copy this value into another instance of the plugin. If you past a value to the import section, all plugin values will be repaced with the values of the import.", "geshi-source-colorer");
     }
     
     static function render_export()
@@ -497,10 +497,10 @@ class render {
     static function render_importstyles()
     {
         echo "<select name=\"fpx_geshisourcecolorer_option[importstyles]\" size=\"1\">";
-        echo "<option value=\"\">".__("not import", "fpx_geshisourcecolorer")."</option>";
-        echo "<option value=\"overwrite\">".__("import and overwrite existing styles", "fpx_geshisourcecolorer")."</option>";
-        echo "<option value=\"ignore\">".__("import and do not overwrite existing styles", "fpx_geshisourcecolorer")."</option>";
-        echo "<option value=\"rename\">".__("import and rename existing styles", "fpx_geshisourcecolorer")."</option>";
+        echo "<option value=\"\">".__("not import", "geshi-source-colorer")."</option>";
+        echo "<option value=\"overwrite\">".__("import and overwrite existing styles", "geshi-source-colorer")."</option>";
+        echo "<option value=\"ignore\">".__("import and do not overwrite existing styles", "geshi-source-colorer")."</option>";
+        echo "<option value=\"rename\">".__("import and rename existing styles", "geshi-source-colorer")."</option>";
         echo "</select>";
     }
 }

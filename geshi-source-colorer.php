@@ -49,7 +49,7 @@ if (preg_match("#" . basename(LOCALPLUGINFILE) . "#", $_SERVER["PHP_SELF"])) { d
 
 // translation
 if (function_exists("load_plugin_textdomain"))
-    load_plugin_textdomain("fpx_geshisourcecolorer", false, dirname(plugin_basename(LOCALPLUGINFILE))."/lang");
+    load_plugin_textdomain("geshi-source-colorer", false, dirname(plugin_basename(LOCALPLUGINFILE))."/lang");
 // =================================================================================================================================================    
 
 
@@ -148,9 +148,9 @@ function initAdminScripts($hook)
         wp_enqueue_script( "geshisourcecolorer_administration" );
 
         wp_localize_script( "geshisourcecolorer_administration", "geshisourcecolorer_messages", array(
-            "defaultdelete"      => __("default style can not be deleted", "fpx_geshisourcecolorer"),
-            "save"               => __("save this style under a new name or use the same name for overriding", "fpx_geshisourcecolorer"),
-            "previewemptycode"   => __("The preview code is empty. Please add some code lines", "fpx_geshisourcecolorer")
+            "defaultdelete"      => __("default style can not be deleted", "geshi-source-colorer"),
+            "save"               => __("save this style under a new name or use the same name for overriding", "geshi-source-colorer"),
+            "previewemptycode"   => __("The preview code is empty. Please add some code lines", "geshi-source-colorer")
         ));
         
         wp_enqueue_style( "geshisourcecolorer_adminstyle" );
@@ -183,9 +183,9 @@ function install()
                 "linenumber"        => true,
                 "collapse"          => false,
                 "visualeditor"      => false,
-                "collapsetext"      => __("view source code", "fpx_geshisourcecolorer"),
-                "lolheadtext"       => __("source contents", "fpx_geshisourcecolorer"),
-                "copytext"          => __("source is copied to clipboard", "fpx_geshisourcecolorer"),
+                "collapsetext"      => __("view source code", "geshi-source-colorer"),
+                "lolheadtext"       => __("source contents", "fgeshi-source-colorer"),
+                "copytext"          => __("source is copied to clipboard", "geshi-source-colorer"),
 
                 // options of the WP tags
                 "tag"               => array(

@@ -134,6 +134,10 @@ To define the (language) styles, take a look into the plugin settings, exspecial
 
 == Changelog == 
 
+= 0.13 =
+
+* change language domain to "geshi-source-colorer"
+
 = 0.12 =
 
 * scripts are loaded only on pages with code

@@ -134,7 +134,7 @@ class filter {
         // get the options
         $option = self::getParameter($pa[1], "line");
         if (empty($option["language"]))
-            return __("no source code language is set", "fpx_geshisourcecolorer");
+            return __("no source code language is set", "geshi-source-colorer");
         
         // disable different options hard
         $option["toolbar"]["linenumber"] = false;
@@ -173,7 +173,7 @@ class filter {
         // get the options
         $option = self::getParameter($pa[1], "block");
         if (empty($option["language"]))
-            return __("no source code language is set", "fpx_geshisourcecolorer");
+            return __("no source code language is set", "geshi-source-colorer");
         
         // create GeSHi instance with code
         $source = self::convertWordpress2Code($pa[4], $option["visualeditor"], false);
