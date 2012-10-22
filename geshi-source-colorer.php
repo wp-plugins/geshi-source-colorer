@@ -184,7 +184,7 @@ function install()
                 "collapse"          => false,
                 "visualeditor"      => false,
                 "collapsetext"      => __("view source code", "geshi-source-colorer"),
-                "lolheadtext"       => __("source contents", "fgeshi-source-colorer"),
+                "lolheadtext"       => __("source contents", "geshi-source-colorer"),
                 "copytext"          => __("source is copied to clipboard", "geshi-source-colorer"),
 
                 // options of the WP tags
