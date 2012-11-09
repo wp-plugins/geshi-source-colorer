@@ -36,6 +36,11 @@ class import {
         if (round($importversion,2) == round($pluginversion,2))
             return self::SelfVersion($option, $data, $pa);
         
+        // version 0.12 & 0.13 handling (versions are equal)
+        if (round($importversion,2) == 0.12)
+            return self::SelfVersion($option, $data, $pa);
+        
+        // version 0.10 & 0.11 handling
         if ( (round($importversion,2) == 0.10) || (round($importversion,2) == 0.11) )
             return self::Version01($option, $data, $pa);
         

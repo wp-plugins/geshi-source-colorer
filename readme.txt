@@ -3,7 +3,7 @@ Contributors: flashpixx
 Tags: code, color, geshi, syntax, syntax highlight, highlight, code color, source, programming, program
 Requires at least: 3.2
 Tested up to: 3.4.2
-Stable tag: 0.12
+Stable tag: 0.13
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WCRMFYTNCJRAU
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
@@ -137,6 +137,7 @@ To define the (language) styles, take a look into the plugin settings, exspecial
 = 0.13 =
 
 * change language domain to "geshi-source-colorer"
+* fixing css typo error
 
 = 0.12 =
 
