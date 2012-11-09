@@ -149,7 +149,7 @@ class filter {
         $id     = "geshisourcecolorer-line-" . (empty($option["id"]) ? md5($source) : $option["id"]);
         
         $geshi  = new \GeSHi( $source, $option["language"] );
-        self::setGeSHiMainOptions($geshi, $option, $id, "geshi-source-colorer-line ".$option["css"]["line"]);
+        self::setGeSHiMainOptions($geshi, $option, $id, "geshisourcecolorer-line ".$option["css"]["line"]);
         self::setGeSHiStyle($geshi, $option["style"]);
         self::setGeSHiHeader($geshi, $option, $id, $source);
         
